@@ -27,7 +27,15 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     private var issueIdField = createIssuesListBox()
     private var devNickField = createDevNickField()
     private var shortDescriptionField = fillShortDescriptionField()
-    private lateinit var project: Project
+
+    companion object{
+        private lateinit var project: Project
+
+        @JvmStatic
+        fun setProject(project: Project) {
+            this.project = project
+        }
+    }
 
     init {
         title = "Issues"
@@ -79,7 +87,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     }
 
     fun openDialog(project: Project) {
-        this.project = project
+        TicketSelectionDialog.project = project
         show()
     }
 
@@ -171,16 +179,18 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
             }
 
             fun checkField() {
-                val isValidDevNick = BranchValidator().isValidBranchNamePart(textField.text)
+                val isValidBranchNamePart = BranchValidator().isValidBranchNamePart(textField.text)
 
-                if (!isValidDevNick) {
+                if (isValidBranchNamePart) {
+                    textField.border = BorderFactory.createLineBorder(Color.blue, 0)
+                } else {
                     textField.border = BorderFactory.createLineBorder(Color.red, 1)
                 }
             }
         })
 
         return textField
-    }
+    }//TODO: change color!!!
 
     private fun setFocusNextField(currentField: JComponent, nextField: JComponent) {
         if (currentField.hasFocus()) {

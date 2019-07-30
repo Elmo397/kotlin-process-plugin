@@ -4,9 +4,11 @@ import com.github.jk1.ytplugin.YouTrackPluginApiComponent
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
 import com.intellij.dvcs.repo.VcsRepositoryManager
+import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import git4idea.branch.GitBrancher
+import git4idea.repo.GitRepository
 import git4idea.repo.GitRepositoryManager
 import java.util.*
 
@@ -29,19 +31,15 @@ class TicketBean {
             val vcsRepoManager = VcsRepositoryManager.getInstance(project)
             val brancher = GitBrancher.getInstance(project)
             val repositories = GitRepositoryManager(project, vcsRepoManager).repositories
+            val repoMap = linkedMapOf<GitRepository, String>()
 
-            //todo: first/arbitrary repo is always bug
-            //todo: how it works? Is it asyncronous and how it put tasks in queue
-            if (!repositories[0].currentBranch!!.name.endsWith("master")) {
-                brancher.checkout("master", false, repositories, null)
+            repositories.forEach { repo ->
+                repoMap[repo] = "master"
             }
 
             val branchName = "rr/$devNick/$issueId/$shortDescription"
-
-            brancher.checkoutNewBranch(
-                branchName,
-                repositories
-            ) //TODO: are you really checkout new branch after checkout master?
+            brancher.createBranch(branchName, repoMap)
+            brancher.checkout(branchName, false, repositories, null)
         } catch (e: Throwable) {
             println(e.message)
         }

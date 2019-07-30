@@ -32,6 +32,7 @@ class BranchValidator {
             inputText.contains(Regex(pattern = """(~|:|\\|\^|\?|\*|\[|@\{|,|\s|\.\.+|/\.)""")) -> false
             inputText.endsWith(".lock") -> false
             inputText.endsWith("/") -> false
+            inputText.endsWith(".") -> false
             inputText.startsWith("/") -> false
             inputText.startsWith(".") -> false
             inputText.isEmpty() -> false

@@ -16,6 +16,7 @@ class TicketAction : AnAction() {
     override fun update(e: AnActionEvent) {
         super.update(e)
         e.presentation.icon = AllIcons.Vcs.Vendors.Github
+        TicketSelectionDialog.setProject(e.project!!)
     }
 }
 
