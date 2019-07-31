@@ -10,13 +10,16 @@
     <actions>
         <group id="KotlinProcessActionsGroup" text="Kotlin Process" popup="true">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
-
-            <action id="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" class="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" text="Ticket">
+            <action id="org.jetbrains.kotlinProcessPlugin.actions.TicketAction"
+                    class="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" text="Ticket">
                 <add-to-group group-id="KotlinProcessActionsGroup" anchor="first"/>
                 <keyboard-shortcut first-keystroke="control alt I" keymap="$default"/>
             </action>
-            <action id="org.jetbrains.kotlinProcessPlugin.actions.CommitAction" class="org.jetbrains.kotlinProcessPlugin.actions.CommitAction" text="Pull Request">
-                <add-to-group group-id="KotlinProcessActionsGroup" anchor="after" relative-to-action="org.jetbrains.kotlinProcessPlugin.actions.TicketAction"/>
+            <action id="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction"
+                    class="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction" text="Pull Request"
+                    description="Create pull request from current branch">
+                <add-to-group group-id="KotlinProcessActionsGroup" anchor="after"
+                              relative-to-action="org.jetbrains.kotlinProcessPlugin.actions.TicketAction"/>
                 <keyboard-shortcut first-keystroke="control alt P" keymap="$default"/>
             </action>
         </group>
