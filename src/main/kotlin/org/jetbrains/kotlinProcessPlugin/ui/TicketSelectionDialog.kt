@@ -76,6 +76,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
             showStateChangeResultBanner(commandResult)
 
             saveDeveloperName(devNick)
+            saveSelectedIssueId(issueId)
 
             super.doOKAction()
         } else {
@@ -91,6 +92,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         show()
     }
 
+    //TODO: set focus in combobox if name already written
     private fun createBranchPanel(): JPanel {
         val branchPanel = JPanel(FlowLayout())
         branchPanel.add(JLabel("Branch: "), FlowLayout.LEFT)
@@ -190,7 +192,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         })
 
         return textField
-    }//TODO: change color!!!
+    }
 
     private fun setFocusNextField(currentField: JComponent, nextField: JComponent) {
         if (currentField.hasFocus()) {
@@ -235,5 +237,9 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
 
     private fun saveDeveloperName(devNick: String) {
         PropertiesComponent.getInstance().setValue("devNick", devNick)
+    }
+
+    private fun saveSelectedIssueId(issueId: String) {
+        PropertiesComponent.getInstance().setValue("issueId", issueId)
     }
 }

@@ -1,17 +1,32 @@
 package org.jetbrains.kotlinProcessPlugin.model
 
+import com.intellij.ide.util.PropertiesComponent
+
 /**
  * @author Mamedova Elnara
  */
 class PullRequestBean {
-    //TODO: add issue id selected when creating a branch
     //TODO: add autocomplete for reviewers
     fun createDefaultDescriptionMessage(): String {
-        val message = "\n" +
-                "\n" +
-                "Reviewer [выпадающий список]\n" +
-                "#<Issue> Fixed\t"
+        return "\n\n" + createReviewerSelectionLine() + createFixedIssueIdLine()
+    }
 
-        return message
+    private fun createReviewerSelectionLine(): String {
+        return "Reviewer \n"
+    }
+
+    private fun getReviewers() {
+
+    }
+
+    private fun createFixedIssueIdLine(): String {
+        var issue: String? = "No issue"
+
+        val propertiesComponent = PropertiesComponent.getInstance()
+        if (propertiesComponent.isValueSet("issueId")) {
+            issue = propertiesComponent.getValue("issueId")
+        }
+
+        return "#$issue Fixed"
     }
 }
