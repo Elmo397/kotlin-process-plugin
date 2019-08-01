@@ -7,6 +7,7 @@ import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.util.Couple
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.util.ThreeState
+import org.jetbrains.kotlinProcessPlugin.model.PullRequestBean
 import org.jetbrains.plugins.github.GithubCreatePullRequestWorker
 import org.jetbrains.plugins.github.ui.GithubCreatePullRequestPanel
 import org.jetbrains.plugins.github.util.GithubNotifications
@@ -20,10 +21,9 @@ class PullRequestDialog(private var project: Project, private var worker: Github
 
     private val ourDoNotAskOption = CreateRemoteDoNotAskOption()
     private var panel: GithubCreatePullRequestPanel = GithubCreatePullRequestPanel()
+    private val myProjectSettings = GithubProjectSettings.getInstance(project)
 
     init {
-        val myProjectSettings = GithubProjectSettings.getInstance(project)
-
         addDiffButtonActionListener()
         addForkButtonActionListener()
         addForkComboBoxItemListener()
@@ -125,7 +125,20 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun getDefaultDescriptionMessage(): String {
-        return ""
+        return PullRequestBean().createDefaultDescriptionMessage()
+    }
+
+    override fun doOKAction() {
+        val branch = panel.selectedBranch
+        if (worker.checkAction(branch)) {
+            assert(branch != null)
+            worker.createPullRequest(branch!!, getRequestTitle(), getDescription())
+
+            myProjectSettings.setCreatePullRequestDefaultBranch(branch.remoteName)
+            myProjectSettings.setCreatePullRequestDefaultRepo(branch.forkInfo.path)
+
+            super.doOKAction()
+        }
     }
 
     override fun createCenterPanel(): JComponent? {

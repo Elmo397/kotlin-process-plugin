@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conversion>
+  <applied-converters>
+    <converter id="android-module-to-java-module" />
+    <converter id="android-proguard-options" />
+    <converter id="android-sdk-library" />
+    <converter id="junit-to-android-junit-configurations" />
+    <converter id="kotlin-non-jvm-source-roots" />
+  </applied-converters>
+  <project-files>
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/compiler.xml" timestamp="1564473968606" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/hm.iml" timestamp="1564479660619" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/kotlinc.xml" timestamp="1563369015667" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/misc.xml" timestamp="1564473966356" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/modules.xml" timestamp="1564473966356" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/vcs.xml" timestamp="1563369015655" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/workspace.xml" timestamp="1564577240514" />
+  </project-files>
+</conversion>
+

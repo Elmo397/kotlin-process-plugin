@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="nanohttpd-2.3.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/nanohttpd-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/youtrack-idea-plugin-0.9.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/youtrack-plugin-api-0.9.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/youtrack-rest-client-0.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/youtrack-rest-client-0.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,26 @@
+<idea-plugin>
+  <version>1.0-SNAPSHOT</version>
+  <change-notes>
+      Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <idea-version since-build="192.5728" until-build="192.*"/>
+  <id>idea-plugin.kotlin-process</id>
+  <name>KotlinProcessPlugin</name>
+  <vendor url="http://www.jetbrains.com">JetBrains</vendor>
+  <depends>com.github.jk1.ytplugin</depends>
+  <depends>Git4Idea</depends>
+  <depends>org.jetbrains.plugins.github</depends>
+  <actions>
+    <group id="KotlinProcessActionsGroup" text="Kotlin Process" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <action id="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" class="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" text="Ticket">
+        <add-to-group group-id="KotlinProcessActionsGroup" anchor="first"/>
+        <keyboard-shortcut first-keystroke="control alt I" keymap="$default"/>
+      </action>
+      <action id="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction" class="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction" text="Pull Request" description="Create pull request from current branch">
+        <add-to-group group-id="KotlinProcessActionsGroup" anchor="after" relative-to-action="org.jetbrains.kotlinProcessPlugin.actions.TicketAction"/>
+        <keyboard-shortcut first-keystroke="control alt P" keymap="$default"/>
+      </action>
+    </group>
+  </actions>
+</idea-plugin>
