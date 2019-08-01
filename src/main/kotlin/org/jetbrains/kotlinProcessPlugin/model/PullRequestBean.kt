@@ -15,6 +15,7 @@ class PullRequestBean {
         return "Reviewer \n"
     }
 
+    //TODO: try get users info from YouTrack-rest-api
     private fun getReviewers() {
 
     }

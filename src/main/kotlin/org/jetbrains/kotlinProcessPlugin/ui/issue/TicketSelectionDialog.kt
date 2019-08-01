@@ -1,4 +1,4 @@
-package org.jetbrains.kotlinProcessPlugin.ui
+package org.jetbrains.kotlinProcessPlugin.ui.issue
 
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
@@ -33,7 +33,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
 
         @JvmStatic
         fun setProject(project: Project) {
-            this.project = project
+            Companion.project = project
         }
     }
 
@@ -61,7 +61,9 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val devNick = devNickField.text
         val shortDescription = shortDescriptionField.text
 
-        TicketBean().getIssues(issueId, project)
+        TicketBean().getIssues(issueId,
+            project
+        )
 
         setFocusNextField(devNickField, issueIdField!!)
         setFocusNextField(issueIdField!!, shortDescriptionField)
@@ -70,9 +72,13 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val isValidSummary = BranchValidator().isValidBranchNamePart(shortDescription)
 
         if (isValidDevNick && isValidSummary) {
-            TicketBean().createBranch(issueId, devNick, shortDescription, project)
+            TicketBean().createBranch(issueId, devNick, shortDescription,
+                project
+            )
 
-            val commandResult = TicketBean().setIssueInProgress(issueId, urlIssueMap, project)
+            val commandResult = TicketBean().setIssueInProgress(issueId, urlIssueMap,
+                project
+            )
             showStateChangeResultBanner(commandResult)
 
             saveDeveloperName(devNick)
@@ -88,7 +94,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     }
 
     fun openDialog(project: Project) {
-        TicketSelectionDialog.project = project
+        Companion.project = project
         show()
     }
 
@@ -157,10 +163,14 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         var field = JTextField(20)
         field = addValidationListener(field)
 
-        field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap, project)
+        field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap,
+            project
+        )
         field.toolTipText = "Issue short description"
         issueIdField!!.addActionListener {
-            field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap, project)
+            field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap,
+                project
+            )
         }
 
         return field
@@ -210,13 +220,18 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         return descriptionPanel
     }
 
+    //TODO: add html-parser for description
     private fun createDescriptionField(): JTextArea {
         val descriptionField = JTextArea(15, 70)
 
-        descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap, project)
+        descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap,
+            project
+        )
 
         issueIdField!!.addActionListener {
-            descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap, project)
+            descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap,
+                project
+            )
         }
 
         return descriptionField

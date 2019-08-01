@@ -3,7 +3,7 @@ package org.jetbrains.kotlinProcessPlugin.actions
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import org.jetbrains.kotlinProcessPlugin.ui.TicketSelectionDialog
+import org.jetbrains.kotlinProcessPlugin.ui.issue.TicketSelectionDialog
 
 /**
  * @author Mamedova Elnara

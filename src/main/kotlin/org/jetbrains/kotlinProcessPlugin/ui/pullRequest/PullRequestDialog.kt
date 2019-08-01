@@ -1,4 +1,4 @@
-package org.jetbrains.kotlinProcessPlugin.ui
+package org.jetbrains.kotlinProcessPlugin.ui.pullRequest
 
 import com.intellij.CommonBundle
 import com.intellij.openapi.project.Project
@@ -19,8 +19,9 @@ import javax.swing.JComponent
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
     DialogWrapper(project, true) {
 
-    private val ourDoNotAskOption = CreateRemoteDoNotAskOption()
-    private var panel: GithubCreatePullRequestPanel = GithubCreatePullRequestPanel()
+    private val ourDoNotAskOption =
+        CreateRemoteDoNotAskOption()
+    private var panel: PullRequestPanel = PullRequestPanel()
     private val myProjectSettings = GithubProjectSettings.getInstance(project)
 
     init {
@@ -44,11 +45,11 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun addDiffButtonActionListener() {
-        panel.showDiffButton.addActionListener { worker.showDiffDialog(panel.selectedBranch) }
+        panel.getShowDiffButton()!!.addActionListener { worker.showDiffDialog(panel.getSelectedBranch()) }
     }
 
     private fun addForkButtonActionListener() {
-        panel.selectForkButton.addActionListener {
+        panel.getSelectForkButton()!!.addActionListener {
             val forkInfo = worker.showTargetDialog()
 
             if (forkInfo != null) {
@@ -59,7 +60,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun addForkComboBoxItemListener(){
-        panel.forkComboBox.addItemListener { e ->
+        panel.getForkComboBox()!!.addItemListener { e ->
             if (e.stateChange == ItemEvent.DESELECTED) {
                 panel.setBranches(emptyList())
             }
@@ -99,7 +100,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun addBranchComboBoxItemListener() {
-        panel.branchComboBox.addItemListener { e ->
+        panel.getBranchComboBox()!!.addItemListener { e ->
             if (e.stateChange == ItemEvent.SELECTED) {
                 val branch = e.item as GithubCreatePullRequestWorker.BranchInfo
 
@@ -111,7 +112,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
                     }
                 }
 
-                if (panel.isTitleDescriptionEmptyOrNotModified) {
+                if (panel.isTitleDescriptionEmptyOrNotModified()) {
                     val descriptionMsg = getDefaultDescriptionMessage()
                     val description = Couple.of(worker.currentBranch, descriptionMsg)
 
@@ -129,7 +130,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     override fun doOKAction() {
-        val branch = panel.selectedBranch
+        val branch = panel.getSelectedBranch()
         if (worker.checkAction(branch)) {
             assert(branch != null)
             worker.createPullRequest(branch!!, getRequestTitle(), getDescription())
@@ -142,11 +143,11 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     override fun createCenterPanel(): JComponent? {
-        return panel.panel
+        return panel.getPanel()
     }
 
     override fun getPreferredFocusedComponent(): JComponent? {
-        return panel.preferredComponent
+        return panel.getPreferredComponent()
     }
 
     override fun getHelpId(): String? {
@@ -159,16 +160,16 @@ class PullRequestDialog(private var project: Project, private var worker: Github
 
     override fun doValidate(): ValidationInfo? {
         return if (StringUtil.isEmptyOrSpaces(getRequestTitle())) {
-            ValidationInfo("Title can't be empty'", panel.titleTextField)
+            ValidationInfo("Title can't be empty'", panel.getTitleTextField())
         } else null
     }
 
     private fun getRequestTitle(): String {
-        return panel.title
+        return panel.getTitle()
     }
 
     private fun getDescription(): String {
-        return panel.description
+        return panel.getDescription()
     }
 
     class CreateRemoteDoNotAskOption : DoNotAskOption {

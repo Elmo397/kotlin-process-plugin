@@ -1,4 +1,4 @@
-package org.jetbrains.kotlinProcessPlugin.ui
+package org.jetbrains.kotlinProcessPlugin.ui.pullRequest
 
 import com.intellij.openapi.project.Project
 import git4idea.DialogManager
