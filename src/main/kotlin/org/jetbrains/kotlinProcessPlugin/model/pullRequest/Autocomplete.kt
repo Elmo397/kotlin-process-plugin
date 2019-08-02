@@ -1,38 +1,73 @@
 package org.jetbrains.kotlinProcessPlugin.model.pullRequest
 
-import javax.swing.JTextArea
+import com.intellij.ui.components.JBList
+import java.awt.Dimension
+import java.awt.Window
+import java.awt.event.FocusEvent
+import java.awt.event.FocusListener
+import java.awt.event.KeyEvent
+import java.awt.event.KeyListener
+import java.util.function.Function
+import javax.swing.*
 import javax.swing.event.DocumentEvent
 import javax.swing.event.DocumentListener
-import java.util.Collections
-import javax.swing.SwingUtilities
-import java.awt.event.ActionEvent
-import javax.swing.AbstractAction
+import kotlin.math.min
 
-class Autocomplete(private var descriptionTextArea: JTextArea, private var reviewers: MutableList<String>) : DocumentListener {
-    enum class Mode {
-        INSERT,
-        COMPLETION
-    }
-
-    private var mode = Mode.INSERT
+class Autocomplete(
+    private var descriptionTextArea: JTextArea,
+    private var reviewersLookup: Function<String, List<String>>
+) : DocumentListener, FocusListener, KeyListener {
     private val startPosition = 11 // Line "\n\nReviewer " have 11 symbols
+    private val results: MutableList<String> = arrayListOf()
+    private var offeredOptionsWindow: JWindow
+    private var lookupList: JBList<*>
+    private val model: ListModel
 
     init {
-        this.reviewers.sort()
         descriptionTextArea.caretPosition = startPosition
+
+        val parent = SwingUtilities.getWindowAncestor(descriptionTextArea)
+        offeredOptionsWindow = JWindow(parent)
+        offeredOptionsWindow.type = Window.Type.POPUP
+        offeredOptionsWindow.focusableWindowState = false
+        offeredOptionsWindow.isAlwaysOnTop = true
+
+        model = ListModel()
+        lookupList = JBList(model)
+
+        offeredOptionsWindow.add(object : JScrollPane(lookupList) {
+            override fun getPreferredSize(): Dimension {
+                val preferredSize = super.getPreferredSize()
+                preferredSize.width = descriptionTextArea.width
+                return preferredSize
+            }
+        })
+
+        descriptionTextArea.addFocusListener(this)
+        descriptionTextArea.document.addDocumentListener(this)
+        descriptionTextArea.addKeyListener(this)
     }
 
     override fun insertUpdate(event: DocumentEvent?) {
-        if (event!!.length != 1) return
+        documentChanged(event)
+    }
 
+    override fun changedUpdate(event: DocumentEvent?) {
+        documentChanged(event)
+    }
+
+    override fun removeUpdate(event: DocumentEvent?) {
+        documentChanged(event)
+    }
+
+    private fun documentChanged(event: DocumentEvent?) {
         try {
-            val position = event.offset
+            val position = event!!.offset
             val content = descriptionTextArea.getText(0, position + 1)
-
             val wordPosition = findWordBeginning(position, content)
-            if (position - wordPosition < 1) return
+            val prefix = content!!.substring(wordPosition + 1).toLowerCase()
 
-            findCompletion(content, wordPosition, position)
+            SwingUtilities.invokeLater(CompletionTask(prefix))
         } catch (e: Throwable) {
             e.printStackTrace()
         }
@@ -51,59 +86,95 @@ class Autocomplete(private var descriptionTextArea: JTextArea, private var revie
         return wordPosition
     }
 
-    private fun findCompletion(content: String?, wordPosition: Int, position: Int) {
-        val prefix = content!!.substring(wordPosition + 1).toLowerCase()
-        val itemPositionInList = Collections.binarySearch(reviewers, prefix)
-
-        if (itemPositionInList < 0 && -itemPositionInList <= reviewers.size) {
-            val match = reviewers[-itemPositionInList - 1]
-
-            if (match.startsWith(prefix)) {
-                // A completion is found
-                val completion = match.substring(position - wordPosition)
-                // We cannot modify Document from within notification,
-                // so we submit a task that does the change later
-                SwingUtilities.invokeLater(CompletionTask(completion, position + 1))
-            }
-        } else {
-            mode = Mode.INSERT
-        }
+    override fun focusLost(e: FocusEvent?) {
+        SwingUtilities.invokeLater { this.hideAutocompletePopup() }
     }
 
-    inner class CommitAction : AbstractAction() {
-        private val serialVersionUID = 5794543109646743416L
-
-        override fun actionPerformed(ev: ActionEvent) {
-            if (mode === Mode.COMPLETION) {
-                val position = descriptionTextArea.selectionEnd
-                val sb = StringBuffer(descriptionTextArea.text)
-
-                sb.insert(position, " ")
-                descriptionTextArea.text = sb.toString()
-                descriptionTextArea.caretPosition = position + 1
-                mode = Mode.INSERT
-            } else {
-                descriptionTextArea.replaceSelection("\t")
+    override fun focusGained(e: FocusEvent?) {
+        SwingUtilities.invokeLater {
+            if (results.size > 0) {
+                showAutocompletePopup()
             }
         }
     }
 
-    private inner class CompletionTask internal constructor(private val completion: String, private val position: Int) :
-        Runnable {
+    private fun showAutocompletePopup() {
+        val location = descriptionTextArea.locationOnScreen
+        val height = descriptionTextArea.height
 
+        offeredOptionsWindow.setLocation(location.x, location.y + height)
+        offeredOptionsWindow.isVisible = true
+    }
+
+    private fun hideAutocompletePopup() {
+        offeredOptionsWindow.isVisible = false
+    }
+
+    override fun keyPressed(e: KeyEvent?) {
+        when {
+            e!!.keyCode == KeyEvent.VK_UP -> {
+                val index = lookupList.selectedIndex
+
+                if (index != -1 && index > 0) {
+                    lookupList.selectedIndex = index - 1
+                }
+            }
+            e.keyCode == KeyEvent.VK_DOWN -> {
+                val index = lookupList.selectedIndex
+
+                if (index != -1 && lookupList.model.size > index + 1) {
+                    lookupList.selectedIndex = index + 1
+                }
+            }
+            e.keyCode == KeyEvent.VK_ENTER -> { //TODO: why "\n" is added in beginning of TextArea after change text?!
+                val text = lookupList.selectedValue as String
+
+                descriptionTextArea.text = PullRequestBean().addReviewerNameToMsg(text)
+                descriptionTextArea.caretPosition = 0
+            }
+            e.keyCode == KeyEvent.VK_ESCAPE -> hideAutocompletePopup()
+        }
+
+        e!!.keyCode = KeyEvent.VK_BACK_SPACE
+    }
+
+    override fun keyReleased(e: KeyEvent?) {}
+
+    override fun keyTyped(e: KeyEvent?) {}
+
+    private inner class ListModel : AbstractListModel<Any>() {
+        override fun getSize(): Int {
+            return results.size
+        }
+
+        override fun getElementAt(index: Int): Any {
+            return results[index]
+        }
+
+        fun updateView() {
+            super.fireContentsChanged(this, 0, size)
+        }
+    }
+
+    private inner class CompletionTask(private val content: String) : Runnable {
         override fun run() {
-            val sb = StringBuffer(descriptionTextArea.text)
+            results.clear()
+            results.addAll(reviewersLookup.apply(content))
 
-            sb.insert(position, completion)
-            descriptionTextArea.text = sb.toString()
-            descriptionTextArea.caretPosition = position + completion.length
-            descriptionTextArea.moveCaretPosition(position)
+            model.updateView()
+            lookupList.visibleRowCount = min(results.size, 10)
 
-            mode = Mode.COMPLETION
+            if (results.size > 0) {
+                lookupList.selectedIndex = 0
+            }
+
+            offeredOptionsWindow.pack()
+
+            if (results.size > 0) {
+                showAutocompletePopup()
+            } else {
+                hideAutocompletePopup()
+            }
         }
     }
-
-    override fun changedUpdate(event: DocumentEvent?) {}
-
-    override fun removeUpdate(event: DocumentEvent?) {}
 }

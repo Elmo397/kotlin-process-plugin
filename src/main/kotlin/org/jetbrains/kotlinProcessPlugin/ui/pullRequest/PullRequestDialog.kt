@@ -16,9 +16,6 @@ import java.awt.event.ItemEvent
 import javax.swing.JComponent
 import org.jetbrains.kotlinProcessPlugin.model.pullRequest.Autocomplete
 import javax.swing.KeyStroke
-import org.jetbrains.kotlinProcessPlugin.model.pullRequest.Autocomplete.CommitAction
-
-
 
 
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
@@ -52,12 +49,10 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     fun addAutocompleteToDescription() {
         try {
             val descriptionTextArea = panel.getDescriptionTextArea()
-            val reviewers = PullRequestBean().getReviewers()
-            val autoComplete = Autocomplete(descriptionTextArea, reviewers)
+            val reviewersLookup = PullRequestBean().getReviewers()
+            val autoComplete = Autocomplete(descriptionTextArea, reviewersLookup)
 
             descriptionTextArea.document.addDocumentListener(autoComplete)
-            descriptionTextArea.inputMap.put(KeyStroke.getKeyStroke("TAB"), commitAction)
-            descriptionTextArea.actionMap.put(commitAction, autoComplete.CommitAction())
         } catch (e: Throwable) {
             e.printStackTrace()
         }

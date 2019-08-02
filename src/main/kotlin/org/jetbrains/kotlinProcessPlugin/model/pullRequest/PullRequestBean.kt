@@ -1,32 +1,44 @@
 package org.jetbrains.kotlinProcessPlugin.model.pullRequest
 
 import com.intellij.ide.util.PropertiesComponent
+import java.util.function.Function
+import java.util.stream.Collectors
 
 /**
  * @author Mamedova Elnara
  */
 class PullRequestBean {
+    private var issue: String? = getIssue()
+
     fun createDefaultDescriptionMessage(): String {
-        return "\n\n" + createReviewerSelectionLine() + createFixedIssueIdLine()
+        return "\n\nReviewer \n#$issue Fixed"
     }
 
     //TODO: try to get users info from YouTrack-rest-api
-    fun getReviewers(): MutableList<String> {
-        return mutableListOf("elmo")
-    }
+    fun getReviewers(): Function<String, List<String>> {
+        val reviewers = mutableListOf("Elmo", "Elya", "Elnara", "ITMO", "JetBrains", "Space", "Sleep", "Jet")
+        reviewers.sort()
 
-    private fun createReviewerSelectionLine(): String {
-        return "Reviewer \n"
-    }
-
-    private fun createFixedIssueIdLine(): String {
-        var issue: String? = "No issue"
-
-        val propertiesComponent = PropertiesComponent.getInstance()
-        if (propertiesComponent.isValueSet("issueId")) {
-            issue = propertiesComponent.getValue("issueId")
+        return Function { text ->
+            reviewers.stream()
+                .filter { reviewer -> text.isNotEmpty() &&
+                            reviewer.toLowerCase().contains(text.toLowerCase()) &&
+                            reviewer != text
+                }
+                .collect(Collectors.toList())
         }
+    }
 
-        return "#$issue Fixed"
+    fun addReviewerNameToMsg(name: String): String {
+        return "\n\nReviewer $name\n#$issue Fixed"
+    }
+
+    private fun getIssue(): String? {
+        val propertiesComponent = PropertiesComponent.getInstance()
+        return if (propertiesComponent.isValueSet("issueId")) {
+            propertiesComponent.getValue("issueId")
+        } else {
+            "No issue"
+        }
     }
 }
