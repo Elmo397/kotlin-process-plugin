@@ -7,22 +7,27 @@ import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.util.Couple
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.util.ThreeState
-import org.jetbrains.kotlinProcessPlugin.model.PullRequestBean
+import org.jetbrains.kotlinProcessPlugin.model.pullRequest.PullRequestBean
 import org.jetbrains.plugins.github.GithubCreatePullRequestWorker
-import org.jetbrains.plugins.github.ui.GithubCreatePullRequestPanel
 import org.jetbrains.plugins.github.util.GithubNotifications
 import org.jetbrains.plugins.github.util.GithubProjectSettings
 import org.jetbrains.plugins.github.util.GithubSettings
 import java.awt.event.ItemEvent
 import javax.swing.JComponent
+import org.jetbrains.kotlinProcessPlugin.model.pullRequest.Autocomplete
+import javax.swing.KeyStroke
+import org.jetbrains.kotlinProcessPlugin.model.pullRequest.Autocomplete.CommitAction
+
+
+
 
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
     DialogWrapper(project, true) {
 
-    private val ourDoNotAskOption =
-        CreateRemoteDoNotAskOption()
+    private val ourDoNotAskOption = CreateRemoteDoNotAskOption()
     private var panel: PullRequestPanel = PullRequestPanel()
     private val myProjectSettings = GithubProjectSettings.getInstance(project)
+    private val commitAction = "commit"
 
     init {
         addDiffButtonActionListener()
@@ -44,12 +49,26 @@ class PullRequestDialog(private var project: Project, private var worker: Github
         init()
     }
 
+    fun addAutocompleteToDescription() {
+        try {
+            val descriptionTextArea = panel.getDescriptionTextArea()
+            val reviewers = PullRequestBean().getReviewers()
+            val autoComplete = Autocomplete(descriptionTextArea, reviewers)
+
+            descriptionTextArea.document.addDocumentListener(autoComplete)
+            descriptionTextArea.inputMap.put(KeyStroke.getKeyStroke("TAB"), commitAction)
+            descriptionTextArea.actionMap.put(commitAction, autoComplete.CommitAction())
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
+    }
+
     private fun addDiffButtonActionListener() {
-        panel.getShowDiffButton()!!.addActionListener { worker.showDiffDialog(panel.getSelectedBranch()) }
+        panel.getShowDiffButton().addActionListener { worker.showDiffDialog(panel.getSelectedBranch()) }
     }
 
     private fun addForkButtonActionListener() {
-        panel.getSelectForkButton()!!.addActionListener {
+        panel.getSelectForkButton().addActionListener {
             val forkInfo = worker.showTargetDialog()
 
             if (forkInfo != null) {
@@ -60,7 +79,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun addForkComboBoxItemListener(){
-        panel.getForkComboBox()!!.addItemListener { e ->
+        panel.getForkComboBox().addItemListener { e ->
             if (e.stateChange == ItemEvent.DESELECTED) {
                 panel.setBranches(emptyList())
             }
@@ -100,7 +119,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     }
 
     private fun addBranchComboBoxItemListener() {
-        panel.getBranchComboBox()!!.addItemListener { e ->
+        panel.getBranchComboBox().addItemListener { e ->
             if (e.stateChange == ItemEvent.SELECTED) {
                 val branch = e.item as GithubCreatePullRequestWorker.BranchInfo
 

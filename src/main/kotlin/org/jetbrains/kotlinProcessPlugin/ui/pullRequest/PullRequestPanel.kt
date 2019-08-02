@@ -11,46 +11,46 @@ import javax.swing.*
 import javax.swing.event.DocumentEvent
 
 class PullRequestPanel {
-    private var titleTextField: JTextField? = null
-    private var descriptionTextArea: JTextArea? = null
-    private var baseBranchComboBox: ComboBox<GithubCreatePullRequestWorker.BranchInfo>? = null
-    private var baseForkComboBox: ComboBox<GithubCreatePullRequestWorker.ForkInfo>? = null
     private var myForkModel: SortedComboBoxModel<GithubCreatePullRequestWorker.ForkInfo>
     private var myBranchModel: SortedComboBoxModel<GithubCreatePullRequestWorker.BranchInfo>
-    private var pullRequestPanel: JPanel? = null
-    private var showDiffBtn: JButton? = null
-    private var selectOtherForkBtn: JButton? = null
-    private var myForkLabel: JLabel? = null
+    private lateinit var baseBranchComboBox: ComboBox<GithubCreatePullRequestWorker.BranchInfo>
+    private lateinit var baseForkComboBox: ComboBox<GithubCreatePullRequestWorker.ForkInfo>
+    private lateinit var titleTextField: JTextField
+    private lateinit var descriptionTextArea: JTextArea
+    private lateinit var pullRequestPanel: JPanel
+    private lateinit var showDiffBtn: JButton
+    private lateinit var selectOtherForkBtn: JButton
+    private lateinit var myForkLabel: JLabel
 
     private var myTitleDescriptionUserModified = false
 
     init {
-        descriptionTextArea!!.border = BorderFactory.createEtchedBorder()
-        descriptionTextArea!!.focusTraversalKeysEnabled = false
+        descriptionTextArea.border = BorderFactory.createEtchedBorder()
+        descriptionTextArea.focusTraversalKeysEnabled = false
 
         myBranchModel = SortedComboBoxModel { o1, o2 -> StringUtil.naturalCompare(o1.remoteName, o2.remoteName) }
-        baseBranchComboBox!!.model = myBranchModel
+        baseBranchComboBox.model = myBranchModel
 
         myForkModel = SortedComboBoxModel { o1, o2 -> StringUtil.naturalCompare(o1.path.user, o2.path.user) }
-        baseForkComboBox!!.model = myForkModel
+        baseForkComboBox.model = myForkModel
 
         val userModifiedDocumentListener = object : DocumentAdapter() {
             override fun textChanged(e: DocumentEvent) {
                 myTitleDescriptionUserModified = true
             }
         }
-        titleTextField!!.document.addDocumentListener(userModifiedDocumentListener)
-        descriptionTextArea!!.document.addDocumentListener(userModifiedDocumentListener)
+        titleTextField.document.addDocumentListener(userModifiedDocumentListener)
+        descriptionTextArea.document.addDocumentListener(userModifiedDocumentListener)
     }
 
     @NotNull
     fun getTitle(): String {
-        return titleTextField!!.text
+        return titleTextField.text
     }
 
     @NotNull
     fun getDescription(): String {
-        return descriptionTextArea!!.text
+        return descriptionTextArea.text
     }
 
     @NotNull
@@ -100,42 +100,17 @@ class PullRequestPanel {
     }
 
     fun setTitle(title: String?) {
-        titleTextField!!.text = title
+        titleTextField.text = title
         myTitleDescriptionUserModified = false
     }
 
     fun setDescription(title: String?) {
-        descriptionTextArea!!.text = title
+        descriptionTextArea.text = title
         myTitleDescriptionUserModified = false
     }
 
     fun setDiffEnabled(enabled: Boolean) {
-        showDiffBtn!!.isEnabled = enabled
-    }
-
-    @NotNull
-    fun getTitleTextField(): JTextField? {
-        return titleTextField
-    }
-
-    @NotNull
-    fun getSelectForkButton(): JButton? {
-        return selectOtherForkBtn
-    }
-
-    @NotNull
-    fun getShowDiffButton(): JButton? {
-        return showDiffBtn
-    }
-
-    @NotNull
-    fun getForkComboBox(): ComboBox<*>? {
-        return baseForkComboBox
-    }
-
-    @NotNull
-    fun getBranchComboBox(): ComboBox<*>? {
-        return baseBranchComboBox
+        showDiffBtn.isEnabled = enabled
     }
 
     fun getPanel(): JPanel? {
@@ -143,13 +118,43 @@ class PullRequestPanel {
     }
 
     @NotNull
-    fun getPreferredComponent(): JTextField? {
+    fun getDescriptionTextArea(): JTextArea {
+        return descriptionTextArea
+    }
+
+    @NotNull
+    fun getTitleTextField(): JTextField {
         return titleTextField
     }
 
+    @NotNull
+    fun getSelectForkButton(): JButton {
+        return selectOtherForkBtn
+    }
+
+    @NotNull
+    fun getShowDiffButton(): JButton {
+        return showDiffBtn
+    }
+
+    @NotNull
+    fun getForkComboBox(): ComboBox<*> {
+        return baseForkComboBox
+    }
+
+    @NotNull
+    fun getBranchComboBox(): ComboBox<*> {
+        return baseBranchComboBox
+    }
+
+    @NotNull
+    fun getPreferredComponent(): JTextArea {
+        return descriptionTextArea
+    }
+
     fun isTitleDescriptionEmptyOrNotModified(): Boolean {
-        return !myTitleDescriptionUserModified || StringUtil.isEmptyOrSpaces(titleTextField!!.text) && StringUtil.isEmptyOrSpaces(
-            descriptionTextArea!!.text
+        return !myTitleDescriptionUserModified || StringUtil.isEmptyOrSpaces(titleTextField.text) && StringUtil.isEmptyOrSpaces(
+            descriptionTextArea.text
         )
     }
 }

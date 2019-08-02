@@ -27,6 +27,7 @@ class PullRequestCreator {
         ) ?: return
 
         val dialog = PullRequestDialog(project, worker)
+        dialog.addAutocompleteToDescription()
         DialogManager.show(dialog)
     }
 }

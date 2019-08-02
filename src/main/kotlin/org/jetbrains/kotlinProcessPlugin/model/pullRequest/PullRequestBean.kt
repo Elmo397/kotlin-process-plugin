@@ -1,4 +1,4 @@
-package org.jetbrains.kotlinProcessPlugin.model
+package org.jetbrains.kotlinProcessPlugin.model.pullRequest
 
 import com.intellij.ide.util.PropertiesComponent
 
@@ -6,18 +6,17 @@ import com.intellij.ide.util.PropertiesComponent
  * @author Mamedova Elnara
  */
 class PullRequestBean {
-    //TODO: add autocomplete for reviewers
     fun createDefaultDescriptionMessage(): String {
         return "\n\n" + createReviewerSelectionLine() + createFixedIssueIdLine()
     }
 
-    private fun createReviewerSelectionLine(): String {
-        return "Reviewer \n"
+    //TODO: try to get users info from YouTrack-rest-api
+    fun getReviewers(): MutableList<String> {
+        return mutableListOf("elmo")
     }
 
-    //TODO: try get users info from YouTrack-rest-api
-    private fun getReviewers() {
-
+    private fun createReviewerSelectionLine(): String {
+        return "Reviewer \n"
     }
 
     private fun createFixedIssueIdLine(): String {

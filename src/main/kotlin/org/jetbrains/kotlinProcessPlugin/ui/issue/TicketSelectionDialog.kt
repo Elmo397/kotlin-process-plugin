@@ -9,8 +9,8 @@ import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.openapi.ui.Messages
 import com.intellij.ui.components.JBScrollPane
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
-import org.jetbrains.kotlinProcessPlugin.model.BranchValidator
-import org.jetbrains.kotlinProcessPlugin.model.TicketBean
+import org.jetbrains.kotlinProcessPlugin.model.issue.BranchValidator
+import org.jetbrains.kotlinProcessPlugin.model.issue.TicketBean
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.ComponentOrientation
@@ -56,6 +56,15 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         return issuePanel
     }
 
+    override fun getPreferredFocusedComponent(): JComponent? {
+        val propertiesComponent = PropertiesComponent.getInstance()
+        return if (!propertiesComponent.isValueSet("devNick")) {
+            devNickField
+        } else {
+            issueIdField
+        }
+    }
+
     override fun doOKAction() {
         val issueId = issueIdField?.selectedItem.toString()
         val devNick = devNickField.text
@@ -76,7 +85,8 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
                 project
             )
 
-            val commandResult = TicketBean().setIssueInProgress(issueId, urlIssueMap,
+            val commandResult = TicketBean()
+                .setIssueInProgress(issueId, urlIssueMap,
                 project
             )
             showStateChangeResultBanner(commandResult)
@@ -98,7 +108,6 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         show()
     }
 
-    //TODO: set focus in combobox if name already written
     private fun createBranchPanel(): JPanel {
         val branchPanel = JPanel(FlowLayout())
         branchPanel.add(JLabel("Branch: "), FlowLayout.LEFT)
@@ -163,12 +172,14 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         var field = JTextField(20)
         field = addValidationListener(field)
 
-        field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap,
+        field.text = TicketBean()
+            .showShortDescription(issueIdField, urlIssueMap,
             project
         )
         field.toolTipText = "Issue short description"
         issueIdField!!.addActionListener {
-            field.text = TicketBean().showShortDescription(issueIdField, urlIssueMap,
+            field.text = TicketBean()
+                .showShortDescription(issueIdField, urlIssueMap,
                 project
             )
         }
@@ -224,12 +235,14 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     private fun createDescriptionField(): JTextArea {
         val descriptionField = JTextArea(15, 70)
 
-        descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap,
+        descriptionField.text = TicketBean()
+            .showDescription(issueIdField, urlIssueMap,
             project
         )
 
         issueIdField!!.addActionListener {
-            descriptionField.text = TicketBean().showDescription(issueIdField, urlIssueMap,
+            descriptionField.text = TicketBean()
+                .showDescription(issueIdField, urlIssueMap,
                 project
             )
         }

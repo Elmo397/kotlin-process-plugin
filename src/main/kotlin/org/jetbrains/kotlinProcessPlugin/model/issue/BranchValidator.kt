@@ -1,4 +1,4 @@
-package org.jetbrains.kotlinProcessPlugin.model
+package org.jetbrains.kotlinProcessPlugin.model.issue
 
 /**
  * @author Mamedova Elnara

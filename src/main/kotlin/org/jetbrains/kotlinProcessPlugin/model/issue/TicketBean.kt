@@ -1,10 +1,9 @@
-package org.jetbrains.kotlinProcessPlugin.model
+package org.jetbrains.kotlinProcessPlugin.model.issue
 
 import com.github.jk1.ytplugin.YouTrackPluginApiComponent
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
 import com.intellij.dvcs.repo.VcsRepositoryManager
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import git4idea.branch.GitBrancher
