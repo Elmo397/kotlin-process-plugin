@@ -14,14 +14,26 @@ class PullRequestBean {
         return "\n\nReviewer \n#$issue Fixed"
     }
 
-    //TODO: try to get users info from YouTrack-rest-api
+    //TODO: Where I can get user info?
     fun getReviewers(): Function<String, List<String>> {
-        val reviewers = mutableListOf("Elmo", "Elya", "Elnara", "ITMO", "JetBrains", "Space", "Sleep", "Jet")
+        val reviewers = mutableListOf(
+            "Alexander Podkhalyuzin",
+            "Vladimir Dolzhenko",
+            "Igor Yakovlev",
+            "Dmitry Gridin",
+            "Ilya Kirillov",
+            "Nicolay Mitropolsky",
+            "Nicolay Mitropolsky",
+            "Natalia Selezneva",
+            "Pavel Talanov",
+            "Nikolay Krasko"
+        )
         reviewers.sort()
 
         return Function { text ->
             reviewers.stream()
-                .filter { reviewer -> text.isNotEmpty() &&
+                .filter { reviewer ->
+                    text.isNotEmpty() &&
                             reviewer.toLowerCase().contains(text.toLowerCase()) &&
                             reviewer != text
                 }
@@ -30,7 +42,7 @@ class PullRequestBean {
     }
 
     fun addReviewerNameToMsg(name: String): String {
-        return "\n\nReviewer $name\n#$issue Fixed"
+        return "\nReviewer $name\n#$issue Fixed"
     }
 
     private fun getIssue(): String? {

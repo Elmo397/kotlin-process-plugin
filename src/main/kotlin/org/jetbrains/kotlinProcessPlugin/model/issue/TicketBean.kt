@@ -3,13 +3,20 @@ package org.jetbrains.kotlinProcessPlugin.model.issue
 import com.github.jk1.ytplugin.YouTrackPluginApiComponent
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
+import com.github.jk1.ytplugin.ui.WikiHtmlPaneFactory
+import com.github.jk1.ytplugin.ui.WikiHtmlPaneFactory.setHtml
 import com.intellij.dvcs.repo.VcsRepositoryManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import git4idea.branch.GitBrancher
 import git4idea.repo.GitRepository
 import git4idea.repo.GitRepositoryManager
+import org.jsoup.Jsoup
+import java.awt.Dimension
 import java.util.*
+import javax.swing.BorderFactory
+import javax.swing.JPanel
+import javax.swing.JTextPane
 
 /**
  * @author Mamedova Elnara
@@ -79,7 +86,11 @@ class TicketBean {
             repositories
                 .filter { repository -> urlIssueMap[selectedIssueId]!!.startsWith(repository.url) }
                 .forEach { repository ->
-                    description = IssuesRestClient(repository).getIssue(selectedIssueId)?.issueDescription
+                    val html = IssuesRestClient(repository).getIssue(selectedIssueId)?.issueDescription
+                    val doc = Jsoup.parse(html)
+
+                    description = doc.text()
+                    description = description!!.replace(". ", ".\n")
                 }
 
             description

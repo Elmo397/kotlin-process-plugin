@@ -86,11 +86,11 @@ class Autocomplete(
         return wordPosition
     }
 
-    override fun focusLost(e: FocusEvent?) {
+    override fun focusLost(event: FocusEvent?) {
         SwingUtilities.invokeLater { this.hideAutocompletePopup() }
     }
 
-    override fun focusGained(e: FocusEvent?) {
+    override fun focusGained(event: FocusEvent?) {
         SwingUtilities.invokeLater {
             if (results.size > 0) {
                 showAutocompletePopup()
@@ -110,37 +110,35 @@ class Autocomplete(
         offeredOptionsWindow.isVisible = false
     }
 
-    override fun keyPressed(e: KeyEvent?) {
+    override fun keyPressed(event: KeyEvent?) {
         when {
-            e!!.keyCode == KeyEvent.VK_UP -> {
+            event!!.keyCode == KeyEvent.VK_UP -> {
                 val index = lookupList.selectedIndex
 
                 if (index != -1 && index > 0) {
                     lookupList.selectedIndex = index - 1
                 }
             }
-            e.keyCode == KeyEvent.VK_DOWN -> {
+            event.keyCode == KeyEvent.VK_DOWN -> {
                 val index = lookupList.selectedIndex
 
                 if (index != -1 && lookupList.model.size > index + 1) {
                     lookupList.selectedIndex = index + 1
                 }
             }
-            e.keyCode == KeyEvent.VK_ENTER -> { //TODO: why "\n" is added in beginning of TextArea after change text?!
+            event.keyCode == KeyEvent.VK_ENTER -> { //TODO: how tab backspace after this event?!
                 val text = lookupList.selectedValue as String
 
                 descriptionTextArea.text = PullRequestBean().addReviewerNameToMsg(text)
                 descriptionTextArea.caretPosition = 0
             }
-            e.keyCode == KeyEvent.VK_ESCAPE -> hideAutocompletePopup()
+            event.keyCode == KeyEvent.VK_ESCAPE -> hideAutocompletePopup()
         }
-
-        e!!.keyCode = KeyEvent.VK_BACK_SPACE
     }
 
-    override fun keyReleased(e: KeyEvent?) {}
+    override fun keyReleased(event: KeyEvent?) {}
 
-    override fun keyTyped(e: KeyEvent?) {}
+    override fun keyTyped(event: KeyEvent?) {}
 
     private inner class ListModel : AbstractListModel<Any>() {
         override fun getSize(): Int {
