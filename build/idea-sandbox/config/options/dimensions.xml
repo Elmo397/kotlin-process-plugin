@@ -1,6 +1,6 @@
 <application>
   <component name="DimensionService">
-    <location key="WELCOME_SCREEN.0.0.3360.2100@192dpi" x="1680" y="852" />
+    <location key="WELCOME_SCREEN.0.0.3360.2100@192dpi" x="1678" y="852" />
     <location key="com.intellij.ide.util.TipDialog.0.0.3360.2100@192dpi" x="880" y="718" />
     <location key="#Notifications.0.0.3360.2100@192dpi" x="880" y="384" />
     <location key="CommitChangelistDialog2.0.0.3360.2100@192dpi" x="944" y="246" />

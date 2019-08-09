@@ -1,5 +1,4 @@
 <idea-plugin>
-  <version>1.0-SNAPSHOT</version>
   <change-notes>
       Add change notes here.&lt;br&gt;
       &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
@@ -13,12 +12,16 @@
   <actions>
     <group id="KotlinProcessActionsGroup" text="Kotlin Process" popup="true">
       <add-to-group group-id="ToolsMenu" anchor="first"/>
-      <action id="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" class="org.jetbrains.kotlinProcessPlugin.actions.TicketAction" text="Ticket">
+      <action id="org.jetbrains.kotlin.process.plugin.actions.RemoteRunAction" class="org.jetbrains.kotlin.process.plugin.actions.RemoteRunAction" text="Start Remote Run Check">
         <add-to-group group-id="KotlinProcessActionsGroup" anchor="first"/>
+        <keyboard-shortcut first-keystroke="control alt R" keymap="$default"/>
+      </action>
+      <action id="org.jetbrains.kotlin.process.plugin.actions.TicketAction" class="org.jetbrains.kotlin.process.plugin.actions.TicketAction" text="Ticket">
+        <add-to-group group-id="KotlinProcessActionsGroup" anchor="after" relative-to-action="org.jetbrains.kotlin.process.plugin.actions.RemoteRunAction"/>
         <keyboard-shortcut first-keystroke="control alt I" keymap="$default"/>
       </action>
-      <action id="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction" class="org.jetbrains.kotlinProcessPlugin.actions.PullRequestAction" text="Pull Request" description="Create pull request from current branch">
-        <add-to-group group-id="KotlinProcessActionsGroup" anchor="after" relative-to-action="org.jetbrains.kotlinProcessPlugin.actions.TicketAction"/>
+      <action id="org.jetbrains.kotlin.process.plugin.actions.PullRequestAction" class="org.jetbrains.kotlin.process.plugin.actions.PullRequestAction" text="Pull Request" description="Create pull request from current branch">
+        <add-to-group group-id="KotlinProcessActionsGroup" anchor="after" relative-to-action="org.jetbrains.kotlin.process.plugin.actions.TicketAction"/>
         <keyboard-shortcut first-keystroke="control alt P" keymap="$default"/>
       </action>
     </group>

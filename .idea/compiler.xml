@@ -2,12 +2,38 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="idea-plugin.kotlin-process-plugin.main" target="12" />
+      <module name="idea-plugin.kotlin-process-plugin.test" target="12" />
+      <module name="IdeaProjects.kotlin-process-plugin.main" target="1.8" />
+      <module name="IdeaProjects.kotlin-process-plugin.test" target="1.8" />
       <module name="kotlin-process-plugin.main" target="12" />
       <module name="kotlin-process-plugin.test" target="12" />
-      <module name="kotlin-process.main" target="11" />
+      <module name="kotlin-process.bot.bintray-cleaner.main" target="1.8" />
+      <module name="kotlin-process.bot.bintray-cleaner.test" target="1.8" />
+      <module name="kotlin-process.bot.git.main" target="1.8" />
+      <module name="kotlin-process.bot.git.test" target="1.8" />
+      <module name="kotlin-process.bot.issues.main" target="1.8" />
+      <module name="kotlin-process.bot.issues.test" target="1.8" />
+      <module name="kotlin-process.bot.rr.main" target="1.8" />
+      <module name="kotlin-process.bot.rr.test" target="1.8" />
+      <module name="kotlin-process.main" target="1.8" />
+      <module name="kotlin-process.notifications.api.main" target="1.8" />
+      <module name="kotlin-process.notifications.api.test" target="1.8" />
+      <module name="kotlin-process.notifications.service.main" target="1.8" />
+      <module name="kotlin-process.notifications.service.test" target="1.8" />
       <module name="kotlin-process.plugin.main" target="11" />
       <module name="kotlin-process.plugin.test" target="11" />
-      <module name="kotlin-process.test" target="11" />
+      <module name="kotlin-process.test" target="1.8" />
+      <module name="kotlin-process.users.api.main" target="1.8" />
+      <module name="kotlin-process.users.api.test" target="1.8" />
+      <module name="kotlin-process.users.service.main" target="1.8" />
+      <module name="kotlin-process.users.service.test" target="1.8" />
+      <module name="kotlin-process.util.botutil.main" target="1.8" />
+      <module name="kotlin-process.util.botutil.test" target="1.8" />
+      <module name="kotlin-process.util.environ.main" target="1.8" />
+      <module name="kotlin-process.util.environ.test" target="1.8" />
+      <module name="kotlin-process.util.stateful.main" target="1.8" />
+      <module name="kotlin-process.util.stateful.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
