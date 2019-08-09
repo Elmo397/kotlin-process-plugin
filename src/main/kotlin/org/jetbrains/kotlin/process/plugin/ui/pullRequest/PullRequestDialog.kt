@@ -7,6 +7,8 @@ import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.util.Couple
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.util.ThreeState
+import org.jetbrains.kotlin.process.bot.git.branchName
+import org.jetbrains.kotlin.process.bot.git.main
 import org.jetbrains.kotlin.process.plugin.model.pullRequest.PullRequestBean
 import org.jetbrains.plugins.github.GithubCreatePullRequestWorker
 import org.jetbrains.plugins.github.util.GithubNotifications
@@ -15,6 +17,7 @@ import org.jetbrains.plugins.github.util.GithubSettings
 import java.awt.event.ItemEvent
 import javax.swing.JComponent
 import org.jetbrains.kotlin.process.plugin.model.pullRequest.Autocomplete
+import org.jetbrains.kotlin.process.plugin.ui.merge.MergePullRequest
 
 
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
@@ -25,7 +28,6 @@ class PullRequestDialog(private var project: Project, private var worker: Github
     private var panel: PullRequestPanel =
         PullRequestPanel()
     private val myProjectSettings = GithubProjectSettings.getInstance(project)
-    private val commitAction = "commit"
 
     init {
         addDiffButtonActionListener()
@@ -58,6 +60,46 @@ class PullRequestDialog(private var project: Project, private var worker: Github
         } catch (e: Throwable) {
             e.printStackTrace()
         }
+    }
+
+    override fun doOKAction() {
+        val branch = panel.getSelectedBranch()
+        if (worker.checkAction(branch)) {
+            assert(branch != null)
+            worker.createPullRequest(branch!!, getRequestTitle(), getDescription())
+
+            myProjectSettings.setCreatePullRequestDefaultBranch(branch.remoteName)
+            myProjectSettings.setCreatePullRequestDefaultRepo(branch.forkInfo.path)
+
+            org.jetbrains.kotlin.process.bot.git.project = project
+            branchName = getRequestTitle()
+
+            super.doOKAction()
+
+            MergePullRequest(false)
+        }
+    }
+
+    override fun createCenterPanel(): JComponent? {
+        return panel.getPanel()
+    }
+
+    override fun getPreferredFocusedComponent(): JComponent? {
+        return panel.getPreferredComponent()
+    }
+
+    override fun getHelpId(): String? {
+        return "github.create.pull.request.dialog"
+    }
+
+    override fun getDimensionServiceKey(): String? {
+        return "Github.CreatePullRequestDialog"
+    }
+
+    override fun doValidate(): ValidationInfo? {
+        return if (StringUtil.isEmptyOrSpaces(getRequestTitle())) {
+            ValidationInfo("Title can't be empty'", panel.getTitleTextField())
+        } else null
     }
 
     private fun addDiffButtonActionListener() {
@@ -143,41 +185,6 @@ class PullRequestDialog(private var project: Project, private var worker: Github
 
     private fun getDefaultDescriptionMessage(): String {
         return PullRequestBean().createDefaultDescriptionMessage()
-    }
-
-    override fun doOKAction() {
-        val branch = panel.getSelectedBranch()
-        if (worker.checkAction(branch)) {
-            assert(branch != null)
-            worker.createPullRequest(branch!!, getRequestTitle(), getDescription())
-
-            myProjectSettings.setCreatePullRequestDefaultBranch(branch.remoteName)
-            myProjectSettings.setCreatePullRequestDefaultRepo(branch.forkInfo.path)
-
-            super.doOKAction()
-        }
-    }
-
-    override fun createCenterPanel(): JComponent? {
-        return panel.getPanel()
-    }
-
-    override fun getPreferredFocusedComponent(): JComponent? {
-        return panel.getPreferredComponent()
-    }
-
-    override fun getHelpId(): String? {
-        return "github.create.pull.request.dialog"
-    }
-
-    override fun getDimensionServiceKey(): String? {
-        return "Github.CreatePullRequestDialog"
-    }
-
-    override fun doValidate(): ValidationInfo? {
-        return if (StringUtil.isEmptyOrSpaces(getRequestTitle())) {
-            ValidationInfo("Title can't be empty'", panel.getTitleTextField())
-        } else null
     }
 
     private fun getRequestTitle(): String {
