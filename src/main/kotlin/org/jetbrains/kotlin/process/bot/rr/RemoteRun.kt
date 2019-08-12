@@ -1,6 +1,5 @@
 package org.jetbrains.kotlin.process.bot.rr
 
-//import org.jetbrains.kotlin.process.notifications.api.send
 import com.intellij.ide.util.PropertiesComponent
 import org.jetbrains.kotlin.process.util.stateful.Stateful
 import org.jetbrains.kotlin.process.util.stateful.read
@@ -13,6 +12,8 @@ data class State(val lastCheckTime: Long, val recordedBuilds: Map<String, Long>)
 
 private val BRANCH_PATTERN = """rr/(?:gradle/)?([^/]*)/.*""".toRegex()
 
+var buildMessages = mutableListOf<String>()
+
 fun checkRemoteRun() {
     println("Remote run bot iteration started.")
 
@@ -21,6 +22,7 @@ fun checkRemoteRun() {
 
     val state = Stateful.read<State>(stateFile) ?: State(0, emptyMap())
 
+    val user = PropertiesComponent.getInstance().getValue("devNick")
     val builds = TeamCityInstanceFactory.guestAuth("https://teamcity.jetbrains.com")
         .builds()
         .fromConfiguration(BuildConfigurationId("Kotlin_dev_AggregateBranch"))
@@ -28,12 +30,15 @@ fun checkRemoteRun() {
         .includeFailed()
         .since(Instant.ofEpochSecond(ageLimit))
         .all()
+/*        .filter {
+            it.branch.name!!.contains(user!!)
+        }
         .filter {
             it.id.stringId !in state.recordedBuilds
         }
         .filter {
             (it.finishDateTime?.toEpochSecond() ?: 0) >= (state.lastCheckTime - 30 * 60)
-        }.toList()
+        }*/.toList()
 
     val newRecordedBuilds = state.recordedBuilds.filterTo(HashMap()) { (_, v) -> v > ageLimit }
 
@@ -47,17 +52,10 @@ fun checkRemoteRun() {
 
         println("Found branch prefix $branchPrefix")
 
-        val user = PropertiesComponent.getInstance().getValue("devNick")
-
         if (user == null) {
             println("Cannot find user for branch prefix $branchPrefix")
             continue
         }
-
-//        if (user.botConfiguration["rr.disable"] == "true") {
-//            System.out.println("RemoteRun bot is disabled for user ${user.fullName}")
-//            continue
-//        }
 
         val message = """
             Build for branch $branchName just finished.
@@ -65,12 +63,10 @@ fun checkRemoteRun() {
             Link: ${build.getHomeUrl()}
         """.trimIndent()
 
+        buildMessages.add(message)
+
 //        val sendResponse = notifications.send(user.id, false, SERVICE_NAME, message).execute()
 //        System.out.println("Sent a notification to user ${user.fullName}")
-
-//        if (!sendResponse.isSuccessful) {
-//            System.err.println("Cannot send a notification to ${user.fullName}")
-//        }
 
         newRecordedBuilds[build.id.stringId] = finishTime
     }

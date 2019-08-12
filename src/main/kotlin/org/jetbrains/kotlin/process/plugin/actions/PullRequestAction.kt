@@ -5,13 +5,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import git4idea.repo.GitRemote
 import git4idea.repo.GitRepository
+import org.jetbrains.kotlin.process.bot.rr.buildMessages
 import org.jetbrains.kotlin.process.plugin.ui.pullRequest.PullRequestCreator
+import org.jetbrains.kotlin.process.plugin.ui.rr.WarningPanel
 import org.jetbrains.plugins.github.AbstractGithubUrlGroupingAction
 import org.jetbrains.plugins.github.authentication.accounts.GithubAccount
 
 /**
  * @author Mamedova Elnara
- */ //TODO: make it visible in KotlinProcessGroup
+ */
 class PullRequestAction : AbstractGithubUrlGroupingAction(
     "Pull Request",
     "Create pull request from current branch",
@@ -25,6 +27,10 @@ class PullRequestAction : AbstractGithubUrlGroupingAction(
         remoteUrl: String,
         account: GithubAccount
     ) {
-        PullRequestCreator().openPullRequestDialog(project, repository, remote, remoteUrl, account)
+        if (buildMessages.isNotEmpty()) {
+            WarningPanel(false, project, repository, remote, remoteUrl, account).show()
+        } else {
+            PullRequestCreator().openPullRequestDialog(project, repository, remote, remoteUrl, account)
+        }
     }
 }

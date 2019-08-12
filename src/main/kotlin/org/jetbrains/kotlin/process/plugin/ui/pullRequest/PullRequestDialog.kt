@@ -17,7 +17,6 @@ import org.jetbrains.plugins.github.util.GithubSettings
 import java.awt.event.ItemEvent
 import javax.swing.JComponent
 import org.jetbrains.kotlin.process.plugin.model.pullRequest.Autocomplete
-import org.jetbrains.kotlin.process.plugin.ui.merge.MergePullRequest
 
 
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
@@ -75,8 +74,7 @@ class PullRequestDialog(private var project: Project, private var worker: Github
             branchName = getRequestTitle()
 
             super.doOKAction()
-
-            MergePullRequest(false)
+            main() //TODO: you should not be here!
         }
     }
 

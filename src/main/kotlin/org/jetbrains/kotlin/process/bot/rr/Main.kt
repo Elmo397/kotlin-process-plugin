@@ -8,7 +8,7 @@ import java.io.File
 const val SERVICE_NAME = "Remote Run"
 
 val stateFile: File = File("tmp/rr.properties")
-const val delay: Long = 1000
+const val delay: Long = 30000
 
 fun main() {
     while (true) {

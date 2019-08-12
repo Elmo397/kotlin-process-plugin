@@ -11,7 +11,6 @@ import com.intellij.ui.components.JBScrollPane
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
 import org.jetbrains.kotlin.process.plugin.model.issue.BranchValidator
 import org.jetbrains.kotlin.process.plugin.model.issue.TicketBean
-import org.jetbrains.kotlin.process.plugin.ui.merge.MergePullRequest
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.ComponentOrientation

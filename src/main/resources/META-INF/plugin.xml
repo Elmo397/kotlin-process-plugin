@@ -31,7 +31,5 @@
                 <keyboard-shortcut first-keystroke="control alt P" keymap="$default"/>
             </action>
         </group>
-        <action id="org.jetbrains.kotlin.process.plugin.actions.MergeAction"
-                class="org.jetbrains.kotlin.process.plugin.actions.MergeAction" text="Rebase"/>
     </actions>
 </idea-plugin>
