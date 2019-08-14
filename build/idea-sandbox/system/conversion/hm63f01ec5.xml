@@ -8,13 +8,14 @@
     <converter id="kotlin-non-jvm-source-roots" />
   </applied-converters>
   <project-files>
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/compiler.xml" timestamp="1564473968606" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/hm.iml" timestamp="1564479660619" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/kotlinc.xml" timestamp="1563369015667" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/misc.xml" timestamp="1564473966356" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/modules.xml" timestamp="1564473966356" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/vcs.xml" timestamp="1563369015655" />
-    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/workspace.xml" timestamp="1565282404602" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/codeStyles/Project.xml" timestamp="1565604108471" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/codeStyles/codeStyleConfig.xml" timestamp="1565604108474" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/compiler.xml" timestamp="1565776904847" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/gradle.xml" timestamp="1565620820481" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/kotlinc.xml" timestamp="1565604105691" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/misc.xml" timestamp="1565604108461" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/vcs.xml" timestamp="1565604108458" />
+    <file path="/Users/elnara.mamedova/IdeaProjects/hm/.idea/workspace.xml" timestamp="1565688960355" />
   </project-files>
 </conversion>
 

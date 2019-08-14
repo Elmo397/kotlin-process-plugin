@@ -55,6 +55,13 @@ allprojects {
             //FOR RR
             implementation "org.jetbrains.teamcity:teamcity-rest-client:1.7.23"
             implementation "org.slf4j:slf4j-simple:1.7.26"
+
+            //FOR GIT
+            implementation 'org.quartz-scheduler:quartz:2.3.0'
+            implementation 'org.quartz-scheduler:quartz-jobs:2.3.0'
+            implementation "org.slf4j:slf4j-simple:1.7.26"
+            compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '5.3.2.201906051522-r'
+            compile group: 'commons-io', name: 'commons-io', version: '2.6'
         }
 
         compileKotlin {

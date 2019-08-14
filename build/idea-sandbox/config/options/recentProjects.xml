@@ -20,12 +20,24 @@
               <option name="build" value="IC-192.5728.98" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1565354840241" />
-              <option name="buildTimestamp" value="1563862277117" />
+              <option name="projectOpenTimestamp" value="1565777289922" />
+              <option name="buildTimestamp" value="1563862266953" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/IdeaProjects/testRepo">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-192.5728.98" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1565603581910" />
+              <option name="buildTimestamp" value="1563862318150" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/IdeaProjects" />
   </component>
 </application>

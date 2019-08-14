@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.process.plugin.actions
+package org.jetbrains.kotlin.process.plugin.actions.pullRequest
 
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.AnActionEvent

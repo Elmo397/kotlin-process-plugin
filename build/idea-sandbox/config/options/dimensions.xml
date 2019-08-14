@@ -12,6 +12,10 @@
     <location key="MergeDialog.0.0.3360.2100@192dpi" x="336" y="188" />
     <location key="Github.CreatePullRequestDialog.0.0.3360.2100@192dpi" x="1276" y="808" />
     <location key="search.everywhere.popup.0.0.3360.2100@192dpi" x="1010" y="466" />
+    <location key="git4idea.rebase.GitRebaseDialog.0.0.3360.2100@192dpi" x="856" y="796" />
+    <location key="new project wizard.0.0.3360.2100@192dpi" x="468" y="62" />
+    <location key="git4idea.merge.GitMergeDialog.0.0.3360.2100@192dpi" x="1226" y="650" />
+    <location key="Vcs.Push.Dialog.0.0.3360.2100@192dpi" x="1048" y="500" />
     <size key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog.0.0.3360.2100@192dpi" width="1618" height="1292" />
     <size key="IDE.errors.dialog.0.0.3360.2100@192dpi" width="1648" height="1284" />
     <size key="MultipleFileMergeDialog.0.0.3360.2100@192dpi" width="1148" height="1104" />
