@@ -12,9 +12,7 @@ import java.time.Instant
 
 data class State(val lastCheckTime: Long, val recordedBuilds: Map<String, Long>) : Stateful<State>
 
-private val BRANCH_PATTERN = """rr/(?:gradle/)?([^/]*)/.*""".toRegex()
-
-var buildMessages = mutableListOf<String>()
+var failedBuilds = 0
 
 fun checkRemoteRun() {
     val currentTime = System.currentTimeMillis() / 1000
@@ -38,6 +36,7 @@ fun checkRemoteRun() {
 
     val newRecordedBuilds = state.recordedBuilds.filterTo(HashMap()) { (_, v) -> v > ageLimit }
 
+    failedBuilds = 0
     messagesField.text = "> Remote run check started\n\n"
     for (build in builds) {
         writeFoundedBuild(build)
@@ -46,6 +45,10 @@ fun checkRemoteRun() {
         val finishTime = build.finishDateTime?.toEpochSecond() ?: continue
 
         writeMessage(build, branchName)
+
+        if(build.status == BuildStatus.FAILURE && build.state != BuildState.RUNNING) {
+            failedBuilds++
+        }
 
         newRecordedBuilds[build.id.stringId] = finishTime
     }

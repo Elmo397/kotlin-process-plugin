@@ -2,21 +2,18 @@
 
 package org.jetbrains.kotlin.process.bot.rr
 
-import org.jetbrains.kotlin.process.botutil.errorMessage
 import java.io.File
 
-const val SERVICE_NAME = "Remote Run"
-
 val stateFile: File = File("tmp/rr.properties")
-const val delay: Long = 30000
+var delay: Long = 120000
+var isRunning = true
 
 fun main() {
-    while (true) {
+    while (isRunning) {
         try {
             checkRemoteRun()
         } catch (e: Throwable) {
-            val errorMessage = e.errorMessage(SERVICE_NAME)
-            //notifications.send(config.adminUserId, true, SERVICE_NAME, errorMessage).execute()
+            e.printStackTrace()
         }
 
         Thread.sleep(delay)

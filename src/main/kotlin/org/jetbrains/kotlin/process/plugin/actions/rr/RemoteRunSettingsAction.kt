@@ -3,10 +3,11 @@ package org.jetbrains.kotlin.process.plugin.actions.rr
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import org.jetbrains.kotlin.process.plugin.ui.rr.Settings
 
 class RemoteRunSettingsAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Settings(false).show()
     }
 
     override fun update(e: AnActionEvent) {

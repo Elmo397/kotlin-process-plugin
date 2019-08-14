@@ -8,7 +8,6 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.content.ContentFactory
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.components.BorderLayoutPanel
-import org.jetbrains.kotlin.process.bot.rr.buildMessages
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction
@@ -39,7 +38,6 @@ fun writeMessage(build: Build, branchName: String) {
                 "Status: ${build.statusText}\n " +
                 "Link: ${build.getHomeUrl()}\n\n"
     } else if(build.status == BuildStatus.FAILURE || build.status == BuildStatus.ERROR) {
-        //messagesField.foreground = Color.red
         messagesField.text += "Build for branch $branchName just finished.\n " +
                 "Status: ${build.statusText}\n " +
                 "Link: ${build.getHomeUrl()}\n\n"
@@ -85,10 +83,6 @@ private class RemoteRunToolWindow : ToolWindowFactory {
     }
 
     private fun createRemoteRunMessagePanel(rrToolWindow: JPanel): JComponent {
-        buildMessages.forEach { message ->
-            messagesField.text += "$message\n\n"
-        }
-
         return object : JScrollPane(
             messagesField,
             ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,

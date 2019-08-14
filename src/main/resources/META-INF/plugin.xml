@@ -16,7 +16,8 @@
             </action>
 
             <action id="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction" text="Pull Request"
+                    class="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
+                    text="Pull Request"
                     description="Create pull request from current branch">
                 <add-to-group group-id="KotlinProcessActionsGroup" anchor="after"
                               relative-to-action="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction"/>
@@ -24,25 +25,14 @@
             </action>
         </group>
 
-        <group id="RemoteRunGroup" popup="true">
-            <add-to-group group-id="ToolWindowsGroup" anchor="last"/>
-            <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction" text="Stop Remote Run">
-                <add-to-group group-id="RemoteRunGroup" anchor="first"/>
-            </action>
+        <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction" text="Stop Remote Run"/>
 
-            <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction" text="Start Remote Run">
-                <add-to-group group-id="RemoteRunGroup" anchor="after"
-                              relative-to-action="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction"/>
-            </action>
+        <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction" text="Start Remote Run"/>
 
-            <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction" text="Settings">
-                <add-to-group group-id="RemoteRunGroup" anchor="after"
-                              relative-to-action="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction"/>
-            </action>
-        </group>
+        <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction" text="Settings"/>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
