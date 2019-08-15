@@ -33,6 +33,8 @@
 
         <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction"
                 class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction" text="Settings"/>
+        <action id="org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction" text="Merge to master"/>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">

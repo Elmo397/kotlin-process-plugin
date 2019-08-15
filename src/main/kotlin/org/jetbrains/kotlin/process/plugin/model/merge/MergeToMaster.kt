@@ -1,16 +1,19 @@
 package org.jetbrains.kotlin.process.plugin.model.merge
 
 import com.intellij.dvcs.repo.VcsRepositoryManager
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.openapi.project.Project
 import git4idea.branch.GitBrancher
 import git4idea.commands.Git
 import git4idea.repo.GitRepositoryManager
-import org.jetbrains.kotlin.process.bot.git.branchName
-import org.jetbrains.kotlin.process.bot.git.project
+
+var branchName: String = PropertiesComponent.getInstance().getValue("branchName")!!
+lateinit var projectForMergeAction: Project
 
 fun merge() {
-    val vcsRepoManager = VcsRepositoryManager.getInstance(project)
-    val brancher = GitBrancher.getInstance(project)
-    val repositories = GitRepositoryManager(project, vcsRepoManager).repositories
+    val vcsRepoManager = VcsRepositoryManager.getInstance(projectForMergeAction)
+    val brancher = GitBrancher.getInstance(projectForMergeAction)
+    val repositories = GitRepositoryManager(projectForMergeAction, vcsRepoManager).repositories
 
     brancher.merge(branchName, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
 //            brancher.rebase(repositories, branchName)
@@ -21,6 +24,7 @@ fun merge() {
         repo.remotes.forEach { remote ->
             remote.pushUrls.forEach { url ->
                 val result = git.push(repo, remote.name, url, repo.currentBranch!!.fullName, true)
+                println(result)
             }
         }
     }

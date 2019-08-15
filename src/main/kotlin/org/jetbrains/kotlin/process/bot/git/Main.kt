@@ -2,17 +2,16 @@
 
 package org.jetbrains.kotlin.process.bot.git
 
-import com.intellij.openapi.project.Project
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationType
+import com.intellij.notification.Notifications
 import org.jetbrains.kotlin.process.botutil.errorMessage
-import org.jetbrains.kotlin.process.plugin.ui.merge.MergePullRequestDialog
+import org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction
 import org.quartz.*
 import org.quartz.impl.StdSchedulerFactory
 
 const val SERVICE_NAME = "git merge branch"
-const val schedule = "*/30 * * * * *" //TODO: change cron
-
-lateinit var project: Project
-lateinit var branchName: String
+const val schedule = "0/10 * * * * ?" //TODO: change cron
 
 fun main() {
     try {
@@ -31,8 +30,7 @@ fun main() {
         println("is started: ${scheduler.isStarted}")
         println("name: ${scheduler.schedulerName}")
 
-        MergePullRequestDialog(false).show() //TODO: You should work in scheduler, but you don't work there ¯\_(ツ)_/¯
-        //scheduler.scheduleJob(job, trigger)
+        scheduler.scheduleJob(job, trigger)
     } catch (e: Throwable) {
         e.printStackTrace()
     }
@@ -41,11 +39,20 @@ fun main() {
 class IssuesJob : Job {
     override fun execute(context: JobExecutionContext?) {
         try {
-            MergePullRequestDialog(false).show()
+            Notifications.Bus.notify(
+                Notification(
+                    "Kotlin Process", "Success",
+                    "You can merge!", NotificationType.INFORMATION
+                ).addAction(MergeAction()).setImportant(true)
+            )
         } catch (e: Throwable) {
-            e.printStackTrace()
             val errorMessage = e.errorMessage(SERVICE_NAME)
-//            notifications.send(config.adminUserId, true, SERVICE_NAME, errorMessage).execute()
+            Notifications.Bus.notify(
+                Notification(
+                    "Kotlin Process", "Error",
+                    errorMessage, NotificationType.ERROR
+                )
+            )
         }
     }
 }

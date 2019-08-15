@@ -1,5 +1,6 @@
 package org.jetbrains.kotlin.process.plugin.ui.merge
 
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import org.jetbrains.kotlin.process.plugin.model.merge.merge
 import javax.swing.JComponent
@@ -20,7 +21,11 @@ class MergePullRequestDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) 
     }
 
     override fun doOKAction() {
-        merge()
-        super.doOKAction()
+        try {
+            merge()
+            super.doOKAction()
+        } catch (e: Throwable) {
+            "stop here"
+        }
     }
 }

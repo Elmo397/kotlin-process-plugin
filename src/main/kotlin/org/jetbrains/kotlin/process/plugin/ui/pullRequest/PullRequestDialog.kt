@@ -7,8 +7,8 @@ import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.util.Couple
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.util.ThreeState
-import org.jetbrains.kotlin.process.bot.git.branchName
 import org.jetbrains.kotlin.process.bot.git.main
+import org.jetbrains.kotlin.process.plugin.model.merge.branchName
 import org.jetbrains.kotlin.process.plugin.model.pullRequest.PullRequestBean
 import org.jetbrains.plugins.github.GithubCreatePullRequestWorker
 import org.jetbrains.plugins.github.util.GithubNotifications
@@ -17,7 +17,6 @@ import org.jetbrains.plugins.github.util.GithubSettings
 import java.awt.event.ItemEvent
 import javax.swing.JComponent
 import org.jetbrains.kotlin.process.plugin.model.pullRequest.Autocomplete
-
 
 class PullRequestDialog(private var project: Project, private var worker: GithubCreatePullRequestWorker) :
     DialogWrapper(project, true) {
@@ -70,11 +69,9 @@ class PullRequestDialog(private var project: Project, private var worker: Github
             myProjectSettings.setCreatePullRequestDefaultBranch(branch.remoteName)
             myProjectSettings.setCreatePullRequestDefaultRepo(branch.forkInfo.path)
 
-            org.jetbrains.kotlin.process.bot.git.project = project
             branchName = getRequestTitle()
 
             super.doOKAction()
-            main() //TODO: you should not be here!
         }
     }
 

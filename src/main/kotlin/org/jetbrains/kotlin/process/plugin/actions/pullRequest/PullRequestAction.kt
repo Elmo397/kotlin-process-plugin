@@ -5,7 +5,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import git4idea.repo.GitRemote
 import git4idea.repo.GitRepository
+import org.jetbrains.kotlin.process.bot.git.main
 import org.jetbrains.kotlin.process.bot.rr.success
+import org.jetbrains.kotlin.process.plugin.model.merge.projectForMergeAction
 import org.jetbrains.kotlin.process.plugin.ui.pullRequest.PullRequestCreator
 import org.jetbrains.kotlin.process.plugin.ui.rr.WarningPanel
 import org.jetbrains.plugins.github.AbstractGithubUrlGroupingAction
@@ -27,10 +29,14 @@ class PullRequestAction : AbstractGithubUrlGroupingAction(
         remoteUrl: String,
         account: GithubAccount
     ) {
+        projectForMergeAction = project
+
         if (!success) {
             WarningPanel(false, project, repository, remote, remoteUrl, account).show()
         } else {
             PullRequestCreator().openPullRequestDialog(project, repository, remote, remoteUrl, account)
         }
+
+        main() //TODO: you should not be here!
     }
 }
