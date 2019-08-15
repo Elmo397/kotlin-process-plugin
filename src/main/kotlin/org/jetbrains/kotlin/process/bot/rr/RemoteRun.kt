@@ -12,7 +12,7 @@ import java.time.Instant
 
 data class State(val lastCheckTime: Long, val recordedBuilds: Map<String, Long>) : Stateful<State>
 
-var failedBuilds = 0
+var success = true
 
 fun checkRemoteRun() {
     val currentTime = System.currentTimeMillis() / 1000
@@ -36,24 +36,29 @@ fun checkRemoteRun() {
 
     val newRecordedBuilds = state.recordedBuilds.filterTo(HashMap()) { (_, v) -> v > ageLimit }
 
-    failedBuilds = 0
     messagesField.text = "> Remote run check started\n\n"
+    success = true
     for (build in builds) {
         writeFoundedBuild(build)
 
         val branchName = build.branch.name ?: continue
         val finishTime = build.finishDateTime?.toEpochSecond() ?: continue
 
-        writeMessage(build, branchName)
-
-        if(build.status == BuildStatus.FAILURE && build.state != BuildState.RUNNING) {
-            failedBuilds++
+        if(branchName == PropertiesComponent.getInstance().getValue("branchName")) {
+            checkCurrentBranch(build)
         }
+        writeMessage(build, branchName)
 
         newRecordedBuilds[build.id.stringId] = finishTime
     }
     messagesField.text += "\n> Remote run check finished"
 
     state.copy(lastCheckTime = currentTime, recordedBuilds = newRecordedBuilds).write(stateFile)
+}
+
+private fun checkCurrentBranch(build: Build) {
+    if(build.state != BuildState.RUNNING && build.status == BuildStatus.FAILURE || build.status == BuildStatus.ERROR) {
+        success = false
+    }
 }
 

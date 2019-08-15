@@ -4,6 +4,7 @@ import com.github.jk1.ytplugin.YouTrackPluginApiComponent
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
 import com.intellij.dvcs.repo.VcsRepositoryManager
+import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import git4idea.branch.GitBrancher
@@ -40,6 +41,7 @@ class TicketBean {
             val branchName = "rr/$devNick/$issueId/$shortDescription"
             brancher.createBranch(branchName, repoMap)
             brancher.checkout(branchName, false, repositories, null)
+            saveBranchName(branchName)
         } catch (e: Throwable) {
             println(e.message)
         }
@@ -130,5 +132,9 @@ class TicketBean {
         shortDescription = shortDescription.substring(0, lastSymbol)
 
         return shortDescription
+    }
+
+    private fun saveBranchName(branchName: String) {
+        PropertiesComponent.getInstance().setValue("branchName", branchName)
     }
 }

@@ -9,7 +9,7 @@ import org.quartz.*
 import org.quartz.impl.StdSchedulerFactory
 
 const val SERVICE_NAME = "git merge branch"
-const val schedule = "*/30 * * * * *"
+const val schedule = "*/30 * * * * *" //TODO: change cron
 
 lateinit var project: Project
 lateinit var branchName: String

@@ -243,6 +243,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
 
     private fun createDescriptionField(): JTextArea {
         val descriptionField = JTextArea(15, 70)
+        descriptionField.isEditable = false
 
         try {
             descriptionField.text = TicketBean()
@@ -257,7 +258,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
                     )
             }
         } catch (e: Throwable) {
-            "stop here"
+            e.printStackTrace()
         }
 
         return descriptionField

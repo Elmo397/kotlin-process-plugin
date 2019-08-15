@@ -17,7 +17,7 @@ class Settings(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     }
 
     override fun createCenterPanel(): JComponent? {
-        timeField.text = "120"
+        timeField.text = (delay / 1000).toString()
 
         val settingsPanel = JPanel(FlowLayout())
         settingsPanel.add(JLabel("Wait"), FlowLayout.LEFT)

@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import git4idea.repo.GitRemote
 import git4idea.repo.GitRepository
-import org.jetbrains.kotlin.process.bot.rr.failedBuilds
+import org.jetbrains.kotlin.process.bot.rr.success
 import org.jetbrains.kotlin.process.plugin.ui.pullRequest.PullRequestCreator
 import org.jetbrains.kotlin.process.plugin.ui.rr.WarningPanel
 import org.jetbrains.plugins.github.AbstractGithubUrlGroupingAction
@@ -27,7 +27,7 @@ class PullRequestAction : AbstractGithubUrlGroupingAction(
         remoteUrl: String,
         account: GithubAccount
     ) {
-        if (failedBuilds != 0) {
+        if (!success) {
             WarningPanel(false, project, repository, remote, remoteUrl, account).show()
         } else {
             PullRequestCreator().openPullRequestDialog(project, repository, remote, remoteUrl, account)

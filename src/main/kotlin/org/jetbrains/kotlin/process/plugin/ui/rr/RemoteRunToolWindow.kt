@@ -10,7 +10,6 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.components.BorderLayoutPanel
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction
-import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction
 import org.jetbrains.teamcity.rest.Build
 import org.jetbrains.teamcity.rest.BuildState
 import org.jetbrains.teamcity.rest.BuildStatus
@@ -37,7 +36,7 @@ fun writeMessage(build: Build, branchName: String) {
         messagesField.text += "Build for branch $branchName running.\n " +
                 "Status: ${build.statusText}\n " +
                 "Link: ${build.getHomeUrl()}\n\n"
-    } else if(build.status == BuildStatus.FAILURE || build.status == BuildStatus.ERROR) {
+    } else if (build.status == BuildStatus.FAILURE || build.status == BuildStatus.ERROR) {
         messagesField.text += "Build for branch $branchName just finished.\n " +
                 "Status: ${build.statusText}\n " +
                 "Link: ${build.getHomeUrl()}\n\n"
@@ -50,6 +49,8 @@ fun writeMessage(build: Build, branchName: String) {
 
 private class RemoteRunToolWindow : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
+        messagesField.isEditable = false
+
         val rrToolWindow = JPanel(FlowLayout())
         rrToolWindow.add(createActionsToolbar(), FlowLayout.LEFT)
         rrToolWindow.add(createRemoteRunMessagePanel(rrToolWindow))
@@ -71,9 +72,9 @@ private class RemoteRunToolWindow : ToolWindowFactory {
         group.add(RemoteRunStartAction())
         actionsPanel.add(createToolbar(group), BorderLayout.PAGE_START)
 
-        group = DefaultActionGroup()
-        group.add(RemoteRunStopAction())
-        actionsPanel.add(createToolbar(group))
+//        group = DefaultActionGroup()
+//        group.add(RemoteRunStopAction())
+//        actionsPanel.add(createToolbar(group))
 
         group = DefaultActionGroup()
         group.add(RemoteRunSettingsAction())
