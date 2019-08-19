@@ -11,7 +11,7 @@ import org.quartz.*
 import org.quartz.impl.StdSchedulerFactory
 
 const val SERVICE_NAME = "git merge branch"
-const val schedule = "0/10 * * * * ?" //TODO: change cron
+const val schedule = "0 0 16 * * ?"
 
 fun main() {
     try {
@@ -31,6 +31,7 @@ fun main() {
         println("name: ${scheduler.schedulerName}")
 
         scheduler.scheduleJob(job, trigger)
+        print("")
     } catch (e: Throwable) {
         e.printStackTrace()
     }

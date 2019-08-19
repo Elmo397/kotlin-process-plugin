@@ -1,9 +1,9 @@
 package org.jetbrains.kotlin.process.bot.rr
 
 import com.intellij.ide.util.PropertiesComponent
-import org.jetbrains.kotlin.process.plugin.ui.rr.messagesField
-import org.jetbrains.kotlin.process.plugin.ui.rr.writeFoundedBuild
-import org.jetbrains.kotlin.process.plugin.ui.rr.writeMessage
+import org.jetbrains.kotlin.process.plugin.messagesField
+import org.jetbrains.kotlin.process.plugin.writeFoundedBuild
+import org.jetbrains.kotlin.process.plugin.writeMessage
 import org.jetbrains.kotlin.process.util.stateful.Stateful
 import org.jetbrains.kotlin.process.util.stateful.read
 import org.jetbrains.kotlin.process.util.stateful.write
@@ -29,7 +29,7 @@ fun checkRemoteRun() {
         .includeRunning()
         .includeFailed()
         .since(Instant.ofEpochSecond(ageLimit))
-        .all()
+        .all() //TODO: uncomment filter
 /*        .filter {
             it.branch.name!!.contains(user!!)
         }*/.toList()

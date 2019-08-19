@@ -18,13 +18,17 @@ fun merge() {
     brancher.merge(branchName, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
 //            brancher.rebase(repositories, branchName)
 
-    //TODO: Are you really merging??
+    //TODO: why are you don't pushing??
     val git = Git.getInstance()
     repositories.forEach { repo ->
         repo.remotes.forEach { remote ->
             remote.pushUrls.forEach { url ->
-                val result = git.push(repo, remote.name, url, repo.currentBranch!!.fullName, true)
-                println(result)
+                git.push(
+                    repo,
+                    remote.name,
+                    url,
+                    repo.currentBranch!!.fullName,
+                    true)
             }
         }
     }

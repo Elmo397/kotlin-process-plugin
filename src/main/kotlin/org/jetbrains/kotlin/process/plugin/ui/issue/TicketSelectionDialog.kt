@@ -9,8 +9,7 @@ import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.openapi.ui.Messages
 import com.intellij.ui.components.JBScrollPane
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
-import org.jetbrains.kotlin.process.plugin.model.issue.BranchValidator
-import org.jetbrains.kotlin.process.plugin.model.issue.TicketBean
+import org.jetbrains.kotlin.process.plugin.model.issue.*
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.ComponentOrientation
@@ -23,7 +22,6 @@ import javax.swing.event.DocumentListener
  */
 class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     private lateinit var issueDialog: JComponent
-    private var urlIssueMap = hashMapOf<String, String>()
     private var issueIdField = createIssuesListBox()
     private var devNickField = createDevNickField()
     private var shortDescriptionField = fillShortDescriptionField()
@@ -70,10 +68,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val devNick = devNickField.text
         val shortDescription = shortDescriptionField.text
 
-        TicketBean().getIssues(
-            issueId,
-            project
-        )
+        TicketBean().getIssues(issueId, project )
 
         setFocusNextField(devNickField, issueIdField!!)
         setFocusNextField(issueIdField!!, shortDescriptionField)
@@ -82,17 +77,10 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val isValidSummary = BranchValidator().isValidBranchNamePart(shortDescription)
 
         if (isValidDevNick && isValidSummary) {
-            TicketBean().createBranch(
-                issueId, devNick, shortDescription,
-                project
-            )
+            TicketBean().createBranch(issueId, devNick, shortDescription, project)
 
-            val commandResult = TicketBean()
-                .setIssueInProgress(
-                    issueId, urlIssueMap,
-                    project
-                )
-            showStateChangeResultBanner(commandResult)
+            val commandResult = changeIssueState(issueId, project, "State In Progress")
+            showStateChangeResultBanner(commandResult, issueDialog)
 
             saveDeveloperName(devNick)
             saveSelectedIssueId(issueId)
@@ -262,19 +250,6 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         }
 
         return descriptionField
-    }
-
-    private fun showStateChangeResultBanner(result: Boolean) {
-        when {
-            result -> {
-                val msg = "Issue state successfully changed to \"In Process\""
-                Messages.showMessageDialog(issueDialog, msg, "Success", Messages.getInformationIcon())
-            }
-            else -> {
-                val msg = "Issue state has not changed"
-                Messages.showMessageDialog(issueDialog, msg, "Error", Messages.getErrorIcon())
-            }
-        }
     }
 
     private fun saveDeveloperName(devNick: String) {

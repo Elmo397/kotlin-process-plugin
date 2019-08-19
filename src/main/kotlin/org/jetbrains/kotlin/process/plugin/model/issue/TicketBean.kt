@@ -47,28 +47,6 @@ class TicketBean {
         }
     }
 
-    //TODO: why it doesn't work?! ¯\_(ツ)_/¯
-    fun setIssueInProgress(issueId: String, urlIssueMap: MutableMap<String, String>, project: Project): Boolean {
-        return try {
-            val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
-
-            var result = false
-            repositories
-                .filter { repository -> urlIssueMap[issueId]!!.startsWith(repository.url) }
-                .forEach { repository ->
-                    val youTrack = YouTrackPluginApiComponent(project)
-
-                    val issue = IssuesRestClient(repository).getIssue(issueId)
-                    result = youTrack.executeCommand(issue!!, "State In Progress").isSuccessful
-                }
-
-            result
-        } catch (e: Throwable) {
-            println(e.stackTrace)
-            false
-        }
-    }
-
     fun showDescription(
         issueIdField: ComboBox<String>?,
         urlIssueMap: MutableMap<String, String>,

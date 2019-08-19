@@ -6,25 +6,9 @@
     <depends>com.github.jk1.ytplugin</depends>
     <depends>Git4Idea</depends>
     <depends>org.jetbrains.plugins.github</depends>
+    <depends>com.intellij.tasks</depends>
 
     <actions>
-        <group id="KotlinProcessActionsGroup" text="Kotlin Process" popup="true">
-            <action id="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction" text="Ticket">
-                <add-to-group group-id="KotlinProcessActionsGroup" anchor="first"/>
-                <keyboard-shortcut first-keystroke="control alt shift I" keymap="$default"/>
-            </action>
-
-            <action id="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
-                    class="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
-                    text="Pull Request"
-                    description="Create pull request from current branch">
-                <add-to-group group-id="KotlinProcessActionsGroup" anchor="after"
-                              relative-to-action="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction"/>
-                <keyboard-shortcut first-keystroke="control alt shift P" keymap="$default"/>
-            </action>
-        </group>
-
         <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction"
                 class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStopAction" text="Stop Remote Run"/>
 
@@ -33,12 +17,21 @@
 
         <action id="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction"
                 class="org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction" text="Settings"/>
+
         <action id="org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction"
-                class="org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction" text="Merge to master"/>
+                class="org.jetbrains.kotlin.process.plugin.actions.merge.MergeAction" text="Merge to Master"/>
+
+        <action id="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction" text="Ticket"/>
+
+        <action id="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
+                class="org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction"
+                text="Pull Request"
+                description="Create pull request from current branch"/>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="Remote Run" secondary="true" anchor="bottom"
-                    factoryClass="org.jetbrains.kotlin.process.plugin.ui.rr.RemoteRunToolWindow"/>
+        <toolWindow id="Kotlin Process" secondary="true" anchor="bottom"
+                    factoryClass="org.jetbrains.kotlin.process.plugin.KotlinProcessToolWindow" icon="/icon/kotlin.svg"/>
     </extensions>
 </idea-plugin>

@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.process.plugin.ui.rr
+package org.jetbrains.kotlin.process.plugin
 
 import com.intellij.find.impl.FindPopupPanel.createToolbar
 import com.intellij.openapi.actionSystem.DefaultActionGroup
@@ -8,6 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.content.ContentFactory
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.components.BorderLayoutPanel
+import org.jetbrains.kotlin.process.plugin.actions.issue.TicketAction
+import org.jetbrains.kotlin.process.plugin.actions.pullRequest.PullRequestAction
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunSettingsAction
 import org.jetbrains.kotlin.process.plugin.actions.rr.RemoteRunStartAction
 import org.jetbrains.teamcity.rest.Build
@@ -47,7 +49,7 @@ fun writeMessage(build: Build, branchName: String) {
     }
 }
 
-private class RemoteRunToolWindow : ToolWindowFactory {
+private class KotlinProcessToolWindow : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         messagesField.isEditable = false
 
@@ -66,21 +68,33 @@ private class RemoteRunToolWindow : ToolWindowFactory {
     }
 
     private fun createLeftActionsToolbar(): JComponent {
-        var group = DefaultActionGroup()
         val actionsPanel = JPanel(BorderLayout())
 
-        group.add(RemoteRunStartAction())
+        var group = DefaultActionGroup()
+        group.add(TicketAction())
         actionsPanel.add(createToolbar(group), BorderLayout.PAGE_START)
 
-//        group = DefaultActionGroup()
-//        group.add(RemoteRunStopAction())
-//        actionsPanel.add(createToolbar(group))
+        actionsPanel.add(createRrActionToolbar())
 
         group = DefaultActionGroup()
-        group.add(RemoteRunSettingsAction())
+        group.add(PullRequestAction())
         actionsPanel.add(createToolbar(group), BorderLayout.AFTER_LAST_LINE)
 
         return actionsPanel
+    }
+
+    private fun createRrActionToolbar(): JComponent {
+        val rrPanel = JPanel(BorderLayout())
+
+        var group = DefaultActionGroup()
+        group.add(RemoteRunStartAction())
+        rrPanel.add(createToolbar(group))
+
+        group = DefaultActionGroup()
+        group.add(RemoteRunSettingsAction())
+        rrPanel.add(createToolbar(group), BorderLayout.AFTER_LAST_LINE)
+
+        return rrPanel
     }
 
     private fun createRemoteRunMessagePanel(rrToolWindow: JPanel): JComponent {

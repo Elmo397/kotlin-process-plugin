@@ -19,7 +19,7 @@ import org.jetbrains.plugins.github.authentication.accounts.GithubAccount
 class PullRequestAction : AbstractGithubUrlGroupingAction(
     "Pull Request",
     "Create pull request from current branch",
-    AllIcons.Vcs.Vendors.Github
+    AllIcons.Vcs.Merge
 ) {
     override fun actionPerformed(
         e: AnActionEvent,
@@ -37,6 +37,6 @@ class PullRequestAction : AbstractGithubUrlGroupingAction(
             PullRequestCreator().openPullRequestDialog(project, repository, remote, remoteUrl, account)
         }
 
-        main() //TODO: you should not be here!
+        main()
     }
 }

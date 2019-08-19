@@ -10,6 +10,6 @@ class MergeAction : AnAction(
     "Merge to master",
     AllIcons.Vcs.Merge) {
     override fun actionPerformed(e: AnActionEvent) {
-        MergePullRequestDialog(false).show()
+        MergePullRequestDialog(true, e.project!!).show()
     }
 }
