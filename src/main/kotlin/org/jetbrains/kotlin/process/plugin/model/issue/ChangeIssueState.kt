@@ -9,19 +9,19 @@ import javax.swing.JComponent
 
 var urlIssueMap = hashMapOf<String, String>()
 
-//TODO: why it doesn't work?! ¯\_(ツ)_/¯
 fun changeIssueState(issueId: String, project: Project, command: String): Boolean {
     return try {
         val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
 
         var result = false
         repositories
-            .filter { repository -> urlIssueMap[issueId]!!.startsWith(repository.url) }
             .forEach { repository ->
                 val youTrack = YouTrackPluginApiComponent(project)
 
-                val issue = IssuesRestClient(repository).getIssue(issueId)
-                result = youTrack.executeCommand(issue!!, command).isSuccessful
+                try {
+                    val issue = IssuesRestClient(repository).getIssue(issueId)
+                    result = youTrack.executeCommand(issue!!, command).isSuccessful
+                } catch (e: RuntimeException){}
             }
 
         result
@@ -31,10 +31,10 @@ fun changeIssueState(issueId: String, project: Project, command: String): Boolea
     }
 }
 
-fun showStateChangeResultBanner(result: Boolean, dialog: JComponent) {
+fun showStateChangeResultBanner(result: Boolean, dialog: JComponent, state: String) {
     when {
         result -> {
-            val msg = "Issue state successfully changed to \"In Process\""
+            val msg = "Issue state successfully changed to \"$state\""
             Messages.showMessageDialog(dialog, msg, "Success", Messages.getInformationIcon())
         }
         else -> {

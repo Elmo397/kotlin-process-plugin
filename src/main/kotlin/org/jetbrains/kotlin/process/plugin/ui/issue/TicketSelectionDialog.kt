@@ -6,7 +6,6 @@ import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogWrapper
-import com.intellij.openapi.ui.Messages
 import com.intellij.ui.components.JBScrollPane
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
 import org.jetbrains.kotlin.process.plugin.model.issue.*
@@ -68,7 +67,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val devNick = devNickField.text
         val shortDescription = shortDescriptionField.text
 
-        TicketBean().getIssues(issueId, project )
+        TicketBean().openIssueInYouTrackPlugin(issueId, project )
 
         setFocusNextField(devNickField, issueIdField!!)
         setFocusNextField(issueIdField!!, shortDescriptionField)
@@ -80,7 +79,7 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
             TicketBean().createBranch(issueId, devNick, shortDescription, project)
 
             val commandResult = changeIssueState(issueId, project, "State In Progress")
-            showStateChangeResultBanner(commandResult, issueDialog)
+            showStateChangeResultBanner(commandResult, issueDialog, "In Progress")
 
             saveDeveloperName(devNick)
             saveSelectedIssueId(issueId)
@@ -164,17 +163,11 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         field = addValidationListener(field)
 
         field.text = TicketBean()
-            .showShortDescription(
-                issueIdField, urlIssueMap,
-                project
-            )
+            .showShortDescription(issueIdField, project)
         field.toolTipText = "Issue short description"
         issueIdField!!.addActionListener {
             field.text = TicketBean()
-                .showShortDescription(
-                    issueIdField, urlIssueMap,
-                    project
-                )
+                .showShortDescription(issueIdField, project)
         }
 
         return field
@@ -235,15 +228,11 @@ class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
 
         try {
             descriptionField.text = TicketBean()
-                .showDescription(issueIdField, urlIssueMap,
-                    project
-                )
+                .showDescription(issueIdField, project)
 
             issueIdField!!.addActionListener {
                 descriptionField.text = TicketBean()
-                    .showDescription(issueIdField, urlIssueMap,
-                        project
-                    )
+                    .showDescription(issueIdField, project)
             }
         } catch (e: Throwable) {
             e.printStackTrace()

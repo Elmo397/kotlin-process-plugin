@@ -7,13 +7,8 @@ import com.intellij.openapi.application.ApplicationManager
 import org.jetbrains.kotlin.process.bot.rr.isRunning
 
 class RemoteRunStopAction : AnAction() {
-    //TODO: How it's mast work
     override fun actionPerformed(e: AnActionEvent) {
-/*
-        ApplicationManager.getApplication().executeOnPooledThread {
-            isRunning = false
-        }
-*/
+        //here the stop class of the remote run check should be called
     }
 
     override fun update(e: AnActionEvent) {

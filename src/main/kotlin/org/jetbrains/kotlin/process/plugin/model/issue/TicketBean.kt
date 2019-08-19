@@ -1,6 +1,7 @@
 package org.jetbrains.kotlin.process.plugin.model.issue
 
 import com.github.jk1.ytplugin.YouTrackPluginApiComponent
+import com.github.jk1.ytplugin.issues.model.Issue
 import com.github.jk1.ytplugin.rest.IssuesRestClient
 import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
 import com.intellij.dvcs.repo.VcsRepositoryManager
@@ -17,7 +18,7 @@ import java.util.*
  * @author Mamedova Elnara
  */
 class TicketBean {
-    fun getIssues(issueId: String, project: Project) {
+    fun openIssueInYouTrackPlugin(issueId: String, project: Project) {
         try {
             val youTrack = YouTrackPluginApiComponent(project)
             youTrack.openIssueInToolWidow(issueId)
@@ -49,50 +50,43 @@ class TicketBean {
 
     fun showDescription(
         issueIdField: ComboBox<String>?,
-        urlIssueMap: MutableMap<String, String>,
         project: Project
     ): String? {
         return try {
-            val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
             val selectedIssueId = issueIdField?.selectedItem.toString()
+            val issue = getIssue(selectedIssueId, project)!!
 
-            var description: String? = ""
-            repositories
-                .filter { repository -> urlIssueMap[selectedIssueId]!!.startsWith(repository.url) }
-                .forEach { repository ->
-                    val html = IssuesRestClient(repository).getIssue(selectedIssueId)?.issueDescription
-                    val doc = Jsoup.parse(html)
-
-                    description = doc.text()
-                    description = description!!.replace(". ", ".\n")
-                }
-
-            description
+            Jsoup.parse(issue.description).text().replace(". ", ".\n")
         } catch (e: Throwable) {
+            e.printStackTrace()
             null
         }
     }
 
     fun showShortDescription(
         issueIdField: ComboBox<String>?,
-        urlIssueMap: MutableMap<String, String>,
         project: Project
     ): String? {
         return try {
-            val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
             val selectedIssueId = issueIdField?.selectedItem.toString()
-
-            var summary: String? = ""
-            repositories
-                .filter { repository -> urlIssueMap[selectedIssueId]!!.startsWith(repository.url) }
-                .forEach { repository ->
-                    summary = IssuesRestClient(repository).getIssue(selectedIssueId)?.summary
-                }
+            val summary = getIssue(selectedIssueId, project)!!.summary
 
             createShortDescriptionForBranch(summary)
         } catch (e: Throwable) {
+            e.printStackTrace()
             null
         }
+    }
+
+    private fun getIssue(issueId: String, project: Project): Issue? {
+        val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
+        repositories
+            .filter { repository -> urlIssueMap[issueId]!!.startsWith(repository.url) }
+            .forEach { repository ->
+                return IssuesRestClient(repository).getIssue(issueId)
+            }
+
+        return null
     }
 
     private fun createShortDescriptionForBranch(summary: String?): String? {

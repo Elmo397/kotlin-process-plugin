@@ -28,8 +28,8 @@ class MergePullRequestDialog(canBeParent: Boolean, private val project: Project)
         merge()
 
         val issueId = PropertiesComponent.getInstance().getValue("issueId")!!
-        val commandResult = changeIssueState(issueId, project, "State In Progress")
-        showStateChangeResultBanner(commandResult, this.contentPanel)
+        val commandResult = changeIssueState(issueId, project, "State Fixed")
+        showStateChangeResultBanner(commandResult, this.contentPanel, "Fixed")
 
         super.doOKAction()
     }

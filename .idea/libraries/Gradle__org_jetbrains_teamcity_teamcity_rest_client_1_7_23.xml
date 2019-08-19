@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: org.jetbrains.teamcity:teamcity-rest-client:1.7.23">
     <CLASSES>
-      <root url="file://$APPLICATION_HOME_DIR$/bin/Could not find org.jetbrains.teamcity:teamcity-rest-client:1.7.23." />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.teamcity/teamcity-rest-client/1.7.23/707b57f5b0b135f09519f46b1180cff235ff196c/teamcity-rest-client-1.7.23.jar!/" />
     </CLASSES>
     <JAVADOC />

@@ -8,93 +8,55 @@ group 'idea-plugin'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
-Task dockerArchiveImages = task('dockerArchiveImages') {
-    doLast {
-        File outputFile = new File(buildDir, "docker/images.tar.gz")
-        outputFile.parentFile.mkdirs()
+pluginManager.withPlugin("org.jetbrains.kotlin.jvm") {
+    sourceCompatibility = 1.8
 
-        StringBuilder sb = new StringBuilder("docker save ")
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+        compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.3.41'
 
-        allprojects {
-            pluginManager.withPlugin("com.bmuschko.docker-java-application") {
-                sb.append(docker.javaApplication.tag.get()).append(' ')
-            }
-        }
+        //FOR PLUGIN
+        //compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile group: 'com.squareup.retrofit', name: 'retrofit', version: '1.9.0'
+        compile group: 'org.w3c', name: 'dom', version: '2.3.0-jaxb-1.0.6'
+        compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
 
-        sb.append("| gzip > ")
-        sb.append(outputFile.path)
+        //FOR UTIL
+        implementation "com.google.code.gson:gson:2.8.5"
+        implementation "com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:1.1.1"
 
-        System.out.println(sb.toString())
-    }
-}
+        //FOR RR
+        implementation "org.jetbrains.teamcity:teamcity-rest-client:1.7.23"
+        implementation "org.slf4j:slf4j-simple:1.7.26"
 
-allprojects {
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
-    pluginManager.withPlugin("org.jetbrains.kotlin.jvm") {
-        sourceCompatibility = 1.8
-
-        dependencies {
-            implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-            compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.3.41'
-
-            //FOR PLUGIN
-            compile fileTree(dir: 'libs', include: ['*.jar'])
-            compile group: 'com.squareup.retrofit', name: 'retrofit', version: '1.9.0'
-            compile group: 'org.w3c', name: 'dom', version: '2.3.0-jaxb-1.0.6'
-            compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
-
-            //FOR UTIL
-            implementation "com.google.code.gson:gson:2.8.5"
-            implementation "com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:1.1.1"
-
-            //FOR RR
-            implementation "org.jetbrains.teamcity:teamcity-rest-client:1.7.23"
-            implementation "org.slf4j:slf4j-simple:1.7.26"
-
-            //FOR GIT
-            implementation 'org.quartz-scheduler:quartz:2.3.0'
-            implementation 'org.quartz-scheduler:quartz-jobs:2.3.0'
-            implementation "org.slf4j:slf4j-simple:1.7.26"
-            compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '5.3.2.201906051522-r'
-            compile group: 'commons-io', name: 'commons-io', version: '2.6'
-        }
-
-        compileKotlin {
-            kotlinOptions.jvmTarget = "1.8"
-        }
-
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = "1.8"
-        }
-
-        sourceSets {
-            main.resources.srcDirs("resources")
-        }
+        //FOR GIT
+        implementation 'org.quartz-scheduler:quartz:2.3.0'
+        implementation 'org.quartz-scheduler:quartz-jobs:2.3.0'
+        implementation "org.slf4j:slf4j-simple:1.7.26"
+        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '5.3.2.201906051522-r'
+        compile group: 'commons-io', name: 'commons-io', version: '2.6'
     }
 
-    pluginManager.withPlugin("com.bmuschko.docker-java-application") {
-        dockerArchiveImages.dependsOn(tasks.getByName("dockerBuildImage"))
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
 
-        docker {
-            registryCredentials {
-                username = "yanex"
-                password = "ppmoyCJ4Hcy7LG{>={aN44Bsfv]YUVTvnKep"
-                email = "me@yanex.org"
-            }
-        }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main.resources.srcDirs("resources")
     }
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2019.2'
-    plugins = ["com.github.jk1.ytplugin:0.9.7", "Git4Idea", "github", "tasks"]
+    plugins = ["com.github.jk1.ytplugin:0.10", "Git4Idea", "github", "tasks"]
 }
 
 patchPluginXml {

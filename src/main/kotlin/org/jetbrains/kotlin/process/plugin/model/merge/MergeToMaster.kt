@@ -16,7 +16,6 @@ fun merge() {
     val repositories = GitRepositoryManager(projectForMergeAction, vcsRepoManager).repositories
 
     brancher.merge(branchName, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
-//            brancher.rebase(repositories, branchName)
 
     //TODO: why are you don't pushing??
     val git = Git.getInstance()
