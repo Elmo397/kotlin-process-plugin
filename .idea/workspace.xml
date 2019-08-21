@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6270f951-093f-487c-96d3-e8ed8aba5783" name="Default Changelist" comment="">
+    <list default="true" id="6270f951-093f-487c-96d3-e8ed8aba5783" name="Default Changelist" comment="&#10;#Fixed KT-123123">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/IssueList.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/IssueListCellRenderer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/TicketBean.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_teamcity_teamcity_rest_client_1_7_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_teamcity_teamcity_rest_client_1_7_23.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/IdeaProjects.kotlin-process-plugin.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/IdeaProjects.kotlin-process-plugin.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/IdeaProjects.kotlin-process-plugin.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/IdeaProjects.kotlin-process-plugin.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main-instrumented/META-INF/kotlin-process-plugin.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main-instrumented/META-INF/kotlin-process-plugin.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/META-INF/kotlin-process-plugin.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/META-INF/kotlin-process-plugin.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/dimensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/dimensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/issues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/issues.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/recentProjects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/recentProjects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/usage.statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/usage.statistics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/options/window.manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/options/window.manager.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/tasks/hm.contexts.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/tasks/hm.contexts.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/config/tasks/hm.tasks.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/config/tasks/hm.tasks.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/plugins/ytplugin/lib/searchableOptions-0.9.5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/LocalHistory/changes.storageData" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/LocalHistory/changes.storageData" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/LocalHistory/changes.storageRecordIndex" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/LocalHistory/changes.storageRecordIndex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/attrib.dat.storageData" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/attrib.dat.storageData" afterDir="false" />
@@ -27,32 +33,19 @@
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat.keystream" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat.keystream.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/contentHashes.dat_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/names.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/records.dat" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/records.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/caches/records.dat.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/caches/records.dat.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/compile-server/hm_b2fa745b/ustamp" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/compile-server/hm_b2fa745b/ustamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/conversion/hm63f01ec5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/conversion/hm63f01ec5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/hashesWithFileType_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/idindex/values_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/todoindex/values" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/todoindex/values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/.persistent/trigram.index/values_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.project" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.project.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.project.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/0a6dee87-f4e8-48e3-87eb-ebf60bd96a41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/1deeb1ec-d520-428d-af60-9b68d1bb4062.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/237160ea-4004-485e-8231-2901e0b61133.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/2fb6e48b-747b-4ea2-a8bc-a58b80272863.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/51308db4-af8f-4125-9bd8-5ec2e6a96841.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/daa992dc-3a0e-453c-a575-6c5081c8dc19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/event-log/df243af5-6d08-4714-9035-6e35ae878370.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex.storage_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/filenameindex/FilenameIndex_inputs_i" afterDir="false" />
@@ -77,21 +70,13 @@
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs.storage.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs.storage_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs.storage_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/Stubs_inputs_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.keystream.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinclassshortnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinClassShortNameIndex.storage_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinexactpackagesindex/org.jetbrains.kotlin.idea.stubindex.KotlinExactPackagesIndex.storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinexactpackagesindex/org.jetbrains.kotlin.idea.stubindex.KotlinExactPackagesIndex.storage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinexactpackagesindex/org.jetbrains.kotlin.idea.stubindex.KotlinExactPackagesIndex.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinexactpackagesindex/org.jetbrains.kotlin.idea.stubindex.KotlinExactPackagesIndex.storage.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlinfullclassnameindex/org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex.storage_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlintoplevelclassbypackageindex/org.jetbrains.kotlin.idea.stubindex.KotlinTopLevelClassByPackageIndex.storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlintoplevelclassbypackageindex/org.jetbrains.kotlin.idea.stubindex.KotlinTopLevelClassByPackageIndex.storage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlintoplevelclassbypackageindex/org.jetbrains.kotlin.idea.stubindex.KotlinTopLevelClassByPackageIndex.storage.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/stubs/org.jetbrains.kotlin.idea.stubindex.kotlintoplevelclassbypackageindex/org.jetbrains.kotlin.idea.stubindex.KotlinTopLevelClassByPackageIndex.storage.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/todoindex/fileIdToHashId" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/todoindex/fileIdToHashId" afterDir="false" />
@@ -101,40 +86,55 @@
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/trigram.index/fileIdToHashId" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/trigram.index/fileIdToHashId" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/index/trigram.index/fileIdToHashId_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/index/trigram.index/fileIdToHashId_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/log/idea.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/log/idea.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/hashes/63f01ec5.9d9f3509.6_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/vcs-log/index/63f01ec5.9d9f3509.messages.6_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/idea-sandbox/system/log/idea.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/build/idea-sandbox/system/log/idea.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
@@ -150,13 +150,39 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/patchedPluginXmlFiles/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/patchedPluginXmlFiles/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/bot/git/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/merge/model/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/bot/rr/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/model/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/bot/rr/RemoteRun.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/model/RemoteRun.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/KotlinProcessToolWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/KotlinProcessToolWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/rr/RemoteRunStopAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/rr/RemoteRunStopAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/ChangeIssueState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/ChangeIssueState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/TicketBean.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/TicketBean.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/merge/MergeToMaster.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/merge/MergeToMaster.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/issue/TicketSelectionDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/issue/TicketSelectionDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/merge/MergePullRequestDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/merge/MergePullRequestDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/issue/TicketAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/action/TicketAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/merge/MergeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/merge/action/MergeAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/pullRequest/PullRequestAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/action/PullRequestAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/rr/RemoteRunSettingsAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/action/RemoteRunSettingsAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/rr/RemoteRunStartAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/action/RemoteRunStartAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/actions/rr/RemoteRunStopAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/action/RemoteRunStopAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/BranchValidator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/BranchValidator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/ChangeIssueState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/ChangeIssueState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/TicketBean.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/merge/MergeToMaster.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/merge/model/MergeToMaster.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/pullRequest/Autocomplete.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/model/Autocomplete.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/pullRequest/PullRequestBean.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/model/PullRequestBean.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/issue/TicketSelectionDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/ui/TicketSelectionDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/merge/MergePullRequestDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/merge/ui/MergePullRequestDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/pullRequest/PullRequestCreator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/ui/PullRequestCreator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/pullRequest/PullRequestDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/ui/PullRequestDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/pullRequest/PullRequestPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/ui/PullRequestPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/pullRequest/PullRequestPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/ui/PullRequestPanel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/rr/Settings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/ui/Settings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/ui/rr/WarningPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/ui/WarningPanel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/util/botutil/errorMessage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/util/errorMessage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/util/environ/parseArgs.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/util/stateful/Stateful.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/StoredCredential" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/credentials.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/rr.properties" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -215,6 +241,23 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="kotlin-process-plugin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="kotlin-process-plugin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="kotlin-process-plugin" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="kotlin-process-plugin" type="f1a62948:ProjectNode" />
                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
@@ -245,7 +288,14 @@
         <option value="elnara.mamedova" />
       </list>
     </option>
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="ProjectId" id="1OYHbF2G29gHweVAc05eItwZT4V" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -277,15 +327,19 @@
     <property name="tasks.open.task.update.state.enabled" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="org.jetbrains.kotlinProcessPlugin.actions" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/rr/model" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/pullRequest/ui" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/merge/model" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model" />
+      <recent name="$PROJECT_DIR$/src/main/resources/icon" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="org.jetbrains.kotlin.process.plugin.actions.pullRequest" />
-      <recent name="org.jetbrains.kotlin.process.plugin.actions.issue" />
-      <recent name="org.jetbrains.kotlin.process.plugin.actions.rr" />
-      <recent name="org.jetbrains.kotlinProcessPlugin.model.issue" />
-      <recent name="org.jetbrains.kotlinProcessPlugin.model.pullRequest" />
+      <recent name="org.jetbrains.kotlin.process.plugin.rr.ui" />
+      <recent name="org.jetbrains.kotlin.process.plugin.rr.action" />
+      <recent name="org.jetbrains.kotlin.process.plugin.pullRequest.ui" />
+      <recent name="org.jetbrains.kotlin.process.plugin.pullRequest.model" />
+      <recent name="org.jetbrains.kotlin.process.plugin.pullRequest.action" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/icon" />
@@ -294,12 +348,11 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/bot/rr" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/util/stateful" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/icon" />
-      <recent name="$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/../kotlin.process" />
-      <recent name="$PROJECT_DIR$/../kotlin.process.bot" />
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="org.jetbrains.kotlin.process.plugin.issue.model" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="org.jetbrains.kotlinProcessPlugin.actions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -314,7 +367,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Plugin">
+  <component name="RunManager" selected="Gradle.kotlin-process-plugin [runIde]">
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="env">
@@ -343,7 +396,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kotlin-process-plugin [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="kotlin-process-plugin [distTar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -354,7 +407,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="assemble" />
+            <option value="distTar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -362,7 +415,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kotlin-process-plugin [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="kotlin-process-plugin [distZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -373,7 +426,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildPlugin" />
+            <option value="distZip" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -381,7 +434,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kotlin-process-plugin [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="kotlin-process-plugin [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -392,7 +445,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -450,19 +503,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Plugin" />
-      <item itemvalue="Gradle.kotlin-process-plugin [assemble]" />
-      <item itemvalue="Gradle.kotlin-process-plugin [build]" />
-      <item itemvalue="Gradle.kotlin-process-plugin [buildPlugin]" />
       <item itemvalue="Gradle.kotlin-process-plugin [runIde]" />
+      <item itemvalue="Gradle.kotlin-process-plugin [distZip]" />
+      <item itemvalue="Gradle.kotlin-process-plugin [distTar]" />
+      <item itemvalue="Gradle.kotlin-process-plugin [jar]" />
       <item itemvalue="Kotlin.org.jetbrains.kotlin.process.users.service.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.org.jetbrains.kotlin.process.users.service.Main" />
         <item itemvalue="Gradle.kotlin-process-plugin [runIde]" />
-        <item itemvalue="Gradle.kotlin-process-plugin [build]" />
-        <item itemvalue="Gradle.kotlin-process-plugin [buildPlugin]" />
-        <item itemvalue="Gradle.kotlin-process-plugin [assemble]" />
+        <item itemvalue="Gradle.kotlin-process-plugin [jar]" />
+        <item itemvalue="Gradle.kotlin-process-plugin [distTar]" />
+        <item itemvalue="Gradle.kotlin-process-plugin [distZip]" />
+        <item itemvalue="Kotlin.org.jetbrains.kotlin.process.users.service.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -508,7 +561,10 @@
       <workItem from="1565601454002" duration="22212000" />
       <workItem from="1565684304687" duration="64452000" />
       <workItem from="1565953097479" duration="7208000" />
-      <workItem from="1566198553542" duration="17088000" />
+      <workItem from="1566198553542" duration="19145000" />
+      <workItem from="1566303688655" duration="8987000" />
+      <workItem from="1566332279537" duration="26000" />
+      <workItem from="1566377175646" duration="17969000" />
     </task>
     <task id="LOCAL-00001" summary="added the first part of the plugin: creating and moving to a new branch, changing the status of a issue">
       <created>1564418721163</created>
@@ -629,7 +685,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566206617675</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added change issue state in YouTrack">
+      <created>1566228267219</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1566228267219</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers>
       <YouTrack url="https://youtrack.jetbrains.com">
         <option name="defaultSearch" value="#Kotlin " />
@@ -676,28 +739,19 @@
     <MESSAGE value="Complemented the merge and remote run action" />
     <MESSAGE value="changed the merge action" />
     <MESSAGE value="Added change issue state method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added change issue state method" />
+    <MESSAGE value="added change issue state in YouTrack" />
+    <option name="LAST_COMMIT_MESSAGE" value="added change issue state in YouTrack" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/ChangeIssueState.kt</url>
-          <line>26</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/model/issue/ChangeIssueState.kt</url>
-          <line>28</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/kotlin/org/jetbrains/kotlin/process/plugin/issue/model/IssueListCellRenderer.kt</url>
+          <line>71</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Remote">
-        <watch expression="project!!.getComponent(TaskManagerProxyComponent::class.java)" language="kotlin" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/kotlin_process_plugin$kotlin_process_plugin__runIde_.ic" NAME="kotlin-process-plugin [runIde] Coverage Results" MODIFIED="1563445544261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
