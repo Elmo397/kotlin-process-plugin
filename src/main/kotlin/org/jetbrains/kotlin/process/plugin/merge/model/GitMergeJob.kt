@@ -1,5 +1,3 @@
-@file:JvmName("Main")
-
 package org.jetbrains.kotlin.process.plugin.merge.model
 
 import com.intellij.notification.Notification

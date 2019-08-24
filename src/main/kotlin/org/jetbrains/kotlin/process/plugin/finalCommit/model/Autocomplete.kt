@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.process.plugin.pullRequest.model
+package org.jetbrains.kotlin.process.plugin.finalCommit.model
 
 import com.intellij.ui.components.JBList
 import java.awt.Dimension
@@ -13,8 +13,6 @@ import javax.swing.event.DocumentEvent
 import javax.swing.event.DocumentListener
 import kotlin.math.min
 
-
-//todo: move to commit message from GitHub
 class Autocomplete(
     private var descriptionTextArea: JTextArea,
     private var reviewersLookup: Function<String, List<String>>
@@ -131,7 +129,7 @@ class Autocomplete(
             event.keyCode == KeyEvent.VK_ENTER -> { //TODO: how tab backspace after this event?!
                 val text = lookupList.selectedValue as String
 
-                descriptionTextArea.text = PullRequestBean().addReviewerNameToMsg(text)
+                descriptionTextArea.text = addReviewerNameToMsg(text)
                 descriptionTextArea.caretPosition = 0
             }
             event.keyCode == KeyEvent.VK_ESCAPE -> hideAutocompletePopup()

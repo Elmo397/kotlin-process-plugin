@@ -75,6 +75,26 @@ fun showShortDescription(
     }
 }
 
+fun getIssueOnBranch(branch: String, project: Project): Issue? {
+    try {
+        val issueId = branch.split("/")[2]
+        val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
+
+        repositories
+            .forEach { repository ->
+                try {
+                    return IssuesRestClient(repository).getIssue(issueId)
+                } catch (e: RuntimeException) {
+                }
+            }
+
+        return null
+    } catch (e: Throwable) {
+        e.printStackTrace()
+        return null
+    }
+}
+
 private fun getIssue(issueId: String, project: Project): Issue? {
     val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
     repositories

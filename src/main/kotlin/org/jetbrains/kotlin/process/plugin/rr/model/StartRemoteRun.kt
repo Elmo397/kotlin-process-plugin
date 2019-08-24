@@ -1,5 +1,3 @@
-@file:JvmName("Main")
-
 package org.jetbrains.kotlin.process.plugin.rr.model
 
 import com.intellij.notification.Notification
@@ -9,11 +7,10 @@ import org.jetbrains.kotlin.process.util.errorMessage
 import java.io.File
 
 const val SERVICE_NAME = "Remote Run"
-val stateFile: File = File("tmp/rr.properties")
 var delay: Long = 120000
 var isRunning = true
 
-fun main() {
+fun startRr() {
     while (isRunning) {
         try {
             checkRemoteRun()

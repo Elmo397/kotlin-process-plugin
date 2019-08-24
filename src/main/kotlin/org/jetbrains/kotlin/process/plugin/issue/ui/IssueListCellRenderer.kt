@@ -1,9 +1,7 @@
-package org.jetbrains.kotlin.process.plugin.issue.model
+package org.jetbrains.kotlin.process.plugin.issue.ui
 
 import com.github.jk1.ytplugin.format
 import com.github.jk1.ytplugin.issues.model.Issue
-import com.github.jk1.ytplugin.rest.IssuesRestClient
-import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
 import com.intellij.openapi.project.Project
 import com.intellij.ui.Gray
 import com.intellij.ui.JBColor
@@ -14,6 +12,7 @@ import com.intellij.ui.border.CustomLineBorder
 import com.intellij.util.ui.UIUtil
 import java.awt.*
 import javax.swing.*
+import org.jetbrains.kotlin.process.plugin.issue.model.getIssueOnBranch
 
 class IssueListCellRenderer(
     private val viewportWidthProvider: () -> Int,
@@ -59,12 +58,12 @@ class IssueListCellRenderer(
     ): Component {
         try {
             if(!branch.contains(noBranchMsg)) {
-                val issue = getIssue(branch)!!
+                val issue = getIssueOnBranch(branch, project)!!
                 val fgColor = getFgColor(isSelected, issue)
 
                 background = UIUtil.getListBackground(isSelected)
 
-                fillSummaryLine(issue, branch, fgColor)
+                fillBranchNameLine(issue, branch, fgColor)
                 fillCustomFields(issue, fgColor, isSelected)
                 createTime(isSelected, issue)
             }
@@ -75,26 +74,6 @@ class IssueListCellRenderer(
         return this
     }
 
-    private fun getIssue(branch: String): Issue? {
-        try {
-            val issueId = branch.split("/")[2]
-            val repositories = TaskManagerProxyComponent(project).getAllConfiguredYouTrackRepositories()
-
-            repositories
-                .forEach { repository ->
-                    try {
-                        return IssuesRestClient(repository).getIssue(issueId)
-                    } catch (e: RuntimeException) {
-                    }
-                }
-
-            return null
-        } catch (e: Throwable) {
-            e.printStackTrace()
-            return null
-        }
-    }
-
     private fun getFgColor(isSelected: Boolean, issue: Issue) = when {
         isSelected -> UIUtil.getListForeground(true)
         issue.resolved -> Color(150, 150, 150)
@@ -102,7 +81,7 @@ class IssueListCellRenderer(
         else -> Color(8, 8, 52)
     }
 
-    private fun fillSummaryLine(issue: Issue, branch: String, fgColor: Color) {
+    private fun fillBranchNameLine(issue: Issue, branch: String, fgColor: Color) {
         idSummaryPanel.removeAll()
         idSummary.clear()
         idSummary.ipad = Insets(0, 4, 0, 0)
@@ -114,7 +93,7 @@ class IssueListCellRenderer(
 
         idSummary.append(branch, SimpleTextAttributes(idStyle, fgColor))
         idSummary.append(" ")
-        idSummaryPanel.add(idSummary, BorderLayout.EAST)
+        idSummaryPanel.add(idSummary, BorderLayout.WEST)
     }
 
     private fun fillCustomFields(issue: Issue, fgColor: Color, isSelected: Boolean) {

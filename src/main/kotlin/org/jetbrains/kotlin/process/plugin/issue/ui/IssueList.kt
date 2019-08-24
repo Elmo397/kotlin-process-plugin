@@ -1,13 +1,13 @@
-package org.jetbrains.kotlin.process.plugin.issue.model
+package org.jetbrains.kotlin.process.plugin.issue.ui
 
 import com.github.jk1.ytplugin.ComponentAware
-import com.github.jk1.ytplugin.tasks.YouTrackServer
 import com.intellij.dvcs.repo.VcsRepositoryManager
 import com.intellij.openapi.project.Project
 import com.intellij.ui.ListSpeedSearch
 import com.intellij.ui.components.JBList
 import com.intellij.ui.components.JBLoadingPanel
 import git4idea.repo.GitRepositoryManager
+import org.jetbrains.kotlin.process.plugin.issue.model.BranchListModel
 import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.event.ActionListener
@@ -18,7 +18,7 @@ const val noBranchMsg = "No branches is created"
 class IssueList(override val project: Project, allBranchesContent: JPanel) : JBLoadingPanel(BorderLayout(), project),
     ComponentAware {
     private val issueList: JBList<String> = JBList()
-    private val branchListModel: BranchListModel = BranchListModel()
+    private val branchListModel: BranchListModel = BranchListModel(project)
     private val renderer: IssueListCellRenderer
 
     init {
@@ -35,11 +35,20 @@ class IssueList(override val project: Project, allBranchesContent: JPanel) : JBL
             }
         }
 
-        renderer = IssueListCellRenderer({ issueListScrollPane.viewport.width }, project)
+        renderer = IssueListCellRenderer(
+            { issueListScrollPane.viewport.width },
+            project
+        )
         issueList.cellRenderer = renderer
         add(issueListScrollPane, BorderLayout.CENTER)
         initIssueListModel()
         ListSpeedSearch(issueList)
+    }
+
+    fun getSelectedBranch() = when {
+        issueList.selectedIndex == -1 -> null
+        issueList.selectedIndex >= branchListModel.size -> null
+        else -> branchListModel.getElementAt(issueList.selectedIndex)
     }
 
     private fun initIssueListModel() {
@@ -49,42 +58,5 @@ class IssueList(override val project: Project, allBranchesContent: JPanel) : JBL
 
     override fun registerKeyboardAction(action: ActionListener, keyStroke: KeyStroke, condition: Int) {
         issueList.registerKeyboardAction(action, keyStroke, condition)
-    }
-
-    inner class BranchListModel : AbstractListModel<String>() {
-        override fun getElementAt(index: Int): String {
-            val vcsRepoManager = VcsRepositoryManager.getInstance(project)
-            val repositories = GitRepositoryManager(project, vcsRepoManager).repositories
-
-            val branches: MutableList<String> = mutableListOf()
-            repositories.forEach { repo ->
-                repo.branches.localBranches
-                    .filter { branch -> !branch.fullName.contains("master") }
-                    .forEach { branch ->
-                        branches.add(branch.name)
-                    }
-            }
-
-            return when {
-                branches.isNotEmpty() && index < branches.size -> branches[index]
-                else -> noBranchMsg
-            }
-        }
-
-        override fun getSize() = when {
-            project.isDisposed -> 0
-            else -> {
-                val vcsRepoManager = VcsRepositoryManager.getInstance(project)
-                val repositories = GitRepositoryManager(project, vcsRepoManager).repositories
-
-                var size = 0
-                repositories.forEach { repo ->
-                    val localBranchesCount = repo.branches.localBranches.size - 1
-                    size = if (size > localBranchesCount) size else localBranchesCount
-                }
-
-                size
-            }
-        }
     }
 }

@@ -19,7 +19,7 @@ import javax.swing.event.DocumentListener
 /**
  * @author Mamedova Elnara
  */
-class TicketSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
+class IssueSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
     private lateinit var issueDialog: JComponent
     private var issueIdField = createIssuesListBox()
     private var devNickField = createDevNickField()

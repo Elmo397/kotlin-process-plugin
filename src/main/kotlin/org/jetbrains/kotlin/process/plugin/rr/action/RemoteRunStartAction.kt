@@ -4,7 +4,7 @@ import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.application.ApplicationManager
-import org.jetbrains.kotlin.process.plugin.rr.model.main
+import org.jetbrains.kotlin.process.plugin.rr.model.startRr
 
 class RemoteRunStartAction : AnAction(
     "Check remote run",
@@ -13,7 +13,7 @@ class RemoteRunStartAction : AnAction(
 ) {
     override fun actionPerformed(e: AnActionEvent) {
         ApplicationManager.getApplication().executeOnPooledThread {
-            main()
+            startRr()
         }
     }
 

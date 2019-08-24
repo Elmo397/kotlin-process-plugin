@@ -1,7 +1,6 @@
 package org.jetbrains.kotlin.process.plugin
 
-import com.github.jk1.ytplugin.tasks.TaskManagerProxyComponent
-import com.intellij.dvcs.repo.VcsRepositoryManager
+import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.ActionPlaces
 import com.intellij.openapi.actionSystem.DefaultActionGroup
@@ -10,11 +9,10 @@ import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.content.ContentFactory
 import com.intellij.ui.content.ContentManager
-import com.intellij.ui.table.JBTable
-import git4idea.repo.GitRepositoryManager
-import org.jetbrains.kotlin.process.plugin.issue.action.TicketAction
-import org.jetbrains.kotlin.process.plugin.issue.model.IssueList
-import org.jetbrains.kotlin.process.plugin.pullRequest.action.PullRequestAction
+import org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction
+import org.jetbrains.kotlin.process.plugin.issue.action.IssueAction
+import org.jetbrains.kotlin.process.plugin.issue.ui.IssueList
+import org.jetbrains.kotlin.process.plugin.merge.action.MergeAction
 import org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunSettingsAction
 import org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunStartAction
 import org.jetbrains.teamcity.rest.Build
@@ -25,6 +23,7 @@ import java.awt.Dimension
 import javax.swing.*
 
 val messagesField = JTextArea("")
+lateinit var issueList: IssueList
 
 fun writeFoundedBuild(build: Build) {
     messagesField.text += when (build.state) {
@@ -60,54 +59,30 @@ class KotlinProcessToolWindow : ToolWindowFactory {
 
     private fun createAllBranchesContent(project: Project): JComponent {
         val allBranchesContent = JPanel()
+        issueList = IssueList(project, allBranchesContent)
 
-        allBranchesContent.add(createActionsToolbar(), BorderLayout.WEST)
-        allBranchesContent.add(IssueList(project, allBranchesContent), BorderLayout.CENTER)
+        allBranchesContent.add(createBranchActionToolbar(), BorderLayout.WEST)
+        allBranchesContent.add(issueList, BorderLayout.CENTER)
 
         return allBranchesContent
     }
 
-    private fun createBranchPanel(project: Project, allBranchesContent: JComponent): JComponent {
-        val vcsRepoManager = VcsRepositoryManager.getInstance(project)
-        val repositories = GitRepositoryManager(project, vcsRepoManager).repositories
-        val branchPanel = JBTable()
+    private fun createBranchActionToolbar(): JComponent {
+        val selectedBranch = { issueList.getSelectedBranch() }
+        val group = DefaultActionGroup()
 
-        repositories.forEach { repo ->
-            repo.branches.localBranches
-                .filter { branch -> !branch.fullName.contains("master") }
-                .forEach { branch ->
-                    branchPanel.add(createBranchLine(branch.name), BorderLayout.AFTER_LAST_LINE)
-                }
-        }
+        group.add(IssueAction())
+        group.add(RemoteRunStartAction())
+        group.add(RemoteRunSettingsAction())
+        group.add(FinalCommitAction(selectedBranch))
+        group.add(MergeAction())
 
-        return object : JScrollPane(
-            branchPanel,
-            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED
-        ) {
-            override fun getPreferredSize(): Dimension {
-                val preferredSize = super.getPreferredSize()
-                preferredSize.width = allBranchesContent.width - 40
-                preferredSize.height = allBranchesContent.height
-                return preferredSize
-            }
-        }
-    }
-
-    private fun createBranchLine(branch: String): JComponent {
-        val branchLine = JPanel()
-        val branchName = JTextField(40)
-
-        branchName.isEditable = false
-        branchName.text = branch
-        branchLine.add(branchName, BorderLayout.LINE_START)
-
-        return branchLine
+        return createVerticalToolbarComponent(group)
     }
 
     private fun createRrLogContent(): JComponent {
         val rrLogContent = JPanel()
-        rrLogContent.add(createActionsToolbar(), BorderLayout.WEST)
+        rrLogContent.add(createRrActionsToolbar(), BorderLayout.WEST)
         rrLogContent.add(createTextPanel(rrLogContent, messagesField), BorderLayout.CENTER)
 
         return rrLogContent
@@ -120,13 +95,13 @@ class KotlinProcessToolWindow : ToolWindowFactory {
         addContent(content)
     }
 
-    private fun createActionsToolbar(): JComponent {
+    private fun createRrActionsToolbar(): JComponent {
         val group = DefaultActionGroup()
 
-        group.add(TicketAction())
+        group.add(IssueAction())
         group.add(RemoteRunStartAction())
         group.add(RemoteRunSettingsAction())
-        group.add(PullRequestAction())
+        group.add(MergeAction())
 
         return createVerticalToolbarComponent(group)
     }

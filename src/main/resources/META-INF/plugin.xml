@@ -21,13 +21,11 @@
         <action id="org.jetbrains.kotlin.process.plugin.merge.action.MergeAction"
                 class="org.jetbrains.kotlin.process.plugin.merge.action.MergeAction" text="Merge to Master"/>
 
-        <action id="org.jetbrains.kotlin.process.plugin.issue.action.TicketAction"
-                class="org.jetbrains.kotlin.process.plugin.issue.action.TicketAction" text="Ticket"/>
+        <action id="org.jetbrains.kotlin.process.plugin.issue.action.IssueAction"
+                class="org.jetbrains.kotlin.process.plugin.issue.action.IssueAction" text="Ticket"/>
 
-        <action id="org.jetbrains.kotlin.process.plugin.pullRequest.action.PullRequestAction"
-                class="org.jetbrains.kotlin.process.plugin.pullRequest.action.PullRequestAction"
-                text="Pull Request"
-                description="Create pull request from current branch"/>
+        <action id="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction"
+                class="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction" text="Final Commit"/>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
