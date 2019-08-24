@@ -15,6 +15,8 @@ fun merge() { //todo: rebase branch to HEAD and merge it then
     val brancher = GitBrancher.getInstance(projectForMergeAction)
     val repositories = GitRepositoryManager(projectForMergeAction, vcsRepoManager).repositories
 
+    brancher.rebase(repositories, branchName)
+    brancher.checkout("master", false, repositories, null)
     brancher.merge(branchName, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
 
     val git = Git.getInstance()

@@ -57,6 +57,7 @@ class KotlinProcessToolWindow : ToolWindowFactory {
         toolWindow.contentManager.addContent("Remote Run Log", createRrLogContent(), false)
     }
 
+    //TODO: listen creation branches and update branch list
     private fun createAllBranchesContent(project: Project): JComponent {
         val allBranchesContent = JPanel()
         issueList = IssueList(project, allBranchesContent)

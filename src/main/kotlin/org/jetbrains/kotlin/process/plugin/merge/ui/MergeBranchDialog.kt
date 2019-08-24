@@ -10,7 +10,7 @@ import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
 
-class MergePullRequestDialog(canBeParent: Boolean, private val project: Project) : DialogWrapper(canBeParent) {
+class MergeBranchDialog(canBeParent: Boolean, private val project: Project) : DialogWrapper(canBeParent) {
     init {
         title = "Merge pull request"
         init()
@@ -24,16 +24,20 @@ class MergePullRequestDialog(canBeParent: Boolean, private val project: Project)
     }
 
     override fun doOKAction() {
-        merge()
+        try {
+            merge()
 
-        val issueId = PropertiesComponent.getInstance().getValue("issueId")!!
-        val commandResult =
-            changeIssueState(issueId, project, "State Fixed")
-        showStateChangeResultBanner(
-            commandResult,
-            this.contentPanel,
-            "Fixed"
-        )
+            val issueId = PropertiesComponent.getInstance().getValue("issueId")!!
+            val commandResult =
+                changeIssueState(issueId, project, "State Fixed")
+            showStateChangeResultBanner(
+                commandResult,
+                this.contentPanel,
+                "Fixed"
+            )
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
 
         super.doOKAction()
     }
