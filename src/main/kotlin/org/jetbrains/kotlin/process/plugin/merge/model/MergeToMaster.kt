@@ -7,17 +7,16 @@ import git4idea.branch.GitBrancher
 import git4idea.commands.Git
 import git4idea.repo.GitRepositoryManager
 
-var branchName: String = PropertiesComponent.getInstance().getValue("branchName")!!
 lateinit var projectForMergeAction: Project
 
-fun merge() { //todo: rebase branch to HEAD and merge it then
+fun merge(branch: String) {
     val vcsRepoManager = VcsRepositoryManager.getInstance(projectForMergeAction)
     val brancher = GitBrancher.getInstance(projectForMergeAction)
     val repositories = GitRepositoryManager(projectForMergeAction, vcsRepoManager).repositories
 
-    brancher.rebase(repositories, branchName)
+    brancher.rebase(repositories, branch)
     brancher.checkout("master", false, repositories, null)
-    brancher.merge(branchName, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
+    brancher.merge(branch, GitBrancher.DeleteOnMergeOption.NOTHING, repositories)
 
     val git = Git.getInstance()
     repositories.forEach { repo ->
