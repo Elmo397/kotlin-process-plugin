@@ -32,7 +32,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="7828020543385" />
+        <entry key="$PROJECT_DIR$" value="7833275756573" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="908818383" />
         <entry key="$PROJECT_DIR$/gradle.properties" value="3258490934" />
@@ -212,6 +212,6 @@
     </option>
   </component>
   <component name="VcsLogIndexCollector">
-    <option name="indexTime" value="611" />
+    <option name="indexTime" value="667" />
   </component>
 </project>

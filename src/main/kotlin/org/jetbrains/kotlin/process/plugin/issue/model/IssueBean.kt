@@ -45,6 +45,11 @@ fun createBranch(issueId: String, devNick: String, shortDescription: String, pro
     }
 }
 
+fun showIssueTitle(
+    issueIdField: ComboBox<String>?,
+    project: Project
+): String? = getIssue(issueIdField?.selectedItem.toString(), project).toString()
+
 fun showDescription(
     issueIdField: ComboBox<String>?,
     project: Project
@@ -53,7 +58,7 @@ fun showDescription(
         val selectedIssueId = issueIdField?.selectedItem.toString()
         val issue = getIssue(selectedIssueId, project)!!
 
-        Jsoup.parse(issue.description).text().replace(". ", ".\n") //todo: render html instead
+        Jsoup.parse(issue.description).text().replace(". ", ".\n")
     } catch (e: Throwable) {
         e.printStackTrace()
         null

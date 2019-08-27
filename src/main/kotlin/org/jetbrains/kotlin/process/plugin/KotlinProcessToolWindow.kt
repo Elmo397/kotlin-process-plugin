@@ -10,6 +10,7 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.content.ContentFactory
 import com.intellij.ui.content.ContentManager
 import org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction
+import org.jetbrains.kotlin.process.plugin.issue.action.DeleteBranchAction
 import org.jetbrains.kotlin.process.plugin.issue.action.IssueAction
 import org.jetbrains.kotlin.process.plugin.issue.ui.IssueList
 import org.jetbrains.kotlin.process.plugin.merge.action.MergeAction
@@ -53,14 +54,14 @@ fun writeMessage(build: Build, branchName: String) {
 
 class KotlinProcessToolWindow : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
-        toolWindow.contentManager.addContent("Branches", createAllBranchesContent(project), false)
         toolWindow.contentManager.addContent("Remote Run Log", createRrLogContent(), false)
+        toolWindow.contentManager.addContent("Branches", createAllBranchesContent(project), false)
     }
 
-    //TODO: listen creation branches and update branch list
     private fun createAllBranchesContent(project: Project): JComponent {
         val allBranchesContent = JPanel()
         issueList = IssueList(project, allBranchesContent)
+        issueList.update()
 
         allBranchesContent.add(createBranchActionToolbar(), BorderLayout.WEST)
         allBranchesContent.add(issueList, BorderLayout.CENTER)
@@ -76,6 +77,7 @@ class KotlinProcessToolWindow : ToolWindowFactory {
         group.add(RemoteRunStartAction())
         group.add(RemoteRunSettingsAction())
         group.add(FinalCommitAction(selectedBranch))
+        group.add(DeleteBranchAction(selectedBranch))
         group.add(MergeAction())
 
         return createVerticalToolbarComponent(group)

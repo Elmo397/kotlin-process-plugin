@@ -15,8 +15,9 @@
     <action id="org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunStartAction" class="org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunStartAction" text="Start Remote Run"/>
     <action id="org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunSettingsAction" class="org.jetbrains.kotlin.process.plugin.rr.action.RemoteRunSettingsAction" text="Settings"/>
     <action id="org.jetbrains.kotlin.process.plugin.merge.action.MergeAction" class="org.jetbrains.kotlin.process.plugin.merge.action.MergeAction" text="Merge to Master"/>
-    <action id="org.jetbrains.kotlin.process.plugin.issue.action.TicketAction" class="org.jetbrains.kotlin.process.plugin.issue.action.TicketAction" text="Ticket"/>
-    <action id="org.jetbrains.kotlin.process.plugin.pullRequest.action.PullRequestAction" class="org.jetbrains.kotlin.process.plugin.pullRequest.action.PullRequestAction" text="Pull Request" description="Create pull request from current branch"/>
+    <action id="org.jetbrains.kotlin.process.plugin.issue.action.IssueAction" class="org.jetbrains.kotlin.process.plugin.issue.action.IssueAction" text="Ticket"/>
+    <action id="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction" class="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction" text="Final Commit"/>
+    <action id="org.jetbrains.kotlin.process.plugin.issue.action.DeleteBranchAction" class="org.jetbrains.kotlin.process.plugin.issue.action.DeleteBranchAction" text="Delete Branch"/>
   </actions>
   <extensions defaultExtensionNs="com.intellij">
     <toolWindow id="Kotlin Process" secondary="true" anchor="bottom" factoryClass="org.jetbrains.kotlin.process.plugin.KotlinProcessToolWindow" icon="/icon/kotlin.svg"/>

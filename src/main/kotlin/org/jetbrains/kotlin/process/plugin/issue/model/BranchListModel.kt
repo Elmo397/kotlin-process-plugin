@@ -41,4 +41,8 @@ class BranchListModel(private val project: Project) : AbstractListModel<String>(
             size
         }
     }
+
+    fun update() {
+        fireContentsChanged(this, 0, size)
+    }
 }

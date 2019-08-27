@@ -51,6 +51,8 @@ class IssueList(override val project: Project, allBranchesContent: JPanel) : JBL
         else -> branchListModel.getElementAt(issueList.selectedIndex)
     }
 
+    fun update() = branchListModel.update()
+
     private fun initIssueListModel() {
         issueList.emptyText.clear()
         issueList.model = branchListModel

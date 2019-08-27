@@ -26,6 +26,8 @@
 
         <action id="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction"
                 class="org.jetbrains.kotlin.process.plugin.finalCommit.action.FinalCommitAction" text="Final Commit"/>
+        <action id="org.jetbrains.kotlin.process.plugin.issue.action.DeleteBranchAction"
+                class="org.jetbrains.kotlin.process.plugin.issue.action.DeleteBranchAction" text="Delete Branch"/>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">

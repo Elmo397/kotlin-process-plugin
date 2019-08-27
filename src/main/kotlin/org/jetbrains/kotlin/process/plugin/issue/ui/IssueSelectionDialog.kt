@@ -9,6 +9,7 @@ import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.ui.components.JBScrollPane
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
 import org.jetbrains.kotlin.process.plugin.issue.model.*
+import org.jetbrains.kotlin.process.plugin.issueList
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.ComponentOrientation
@@ -67,9 +68,7 @@ class IssueSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val devNick = devNickField.text
         val shortDescription = shortDescriptionField.text
 
-        openIssueInYouTrackPlugin(issueId,
-            project
-        )
+        openIssueInYouTrackPlugin(issueId, project)
 
         setFocusNextField(devNickField, issueIdField!!)
         setFocusNextField(issueIdField!!, shortDescriptionField)
@@ -93,6 +92,8 @@ class IssueSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
 
             saveDeveloperName(devNick)
             saveSelectedIssueId(issueId)
+
+            issueList.update()
 
             super.doOKAction()
         } else {
@@ -238,18 +239,24 @@ class IssueSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val descriptionField = JTextArea(15, 70)
         descriptionField.isEditable = false
 
+        descriptionField.add(JLabel("JetBrains"))
+
         try {
             descriptionField.text =
                 showDescription(issueIdField,
                     project
                 )
+            descriptionField.caretPosition = 0
 
             issueIdField!!.addActionListener {
                 descriptionField.text =
                     showDescription(issueIdField,
                         project
                     )
+
+                descriptionField.caretPosition = 0
             }
+
         } catch (e: Throwable) {
             e.printStackTrace()
         }

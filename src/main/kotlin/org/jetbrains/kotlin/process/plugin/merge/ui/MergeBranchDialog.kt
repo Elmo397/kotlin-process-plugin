@@ -3,6 +3,7 @@ package org.jetbrains.kotlin.process.plugin.merge.ui
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogWrapper
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator
 import org.jetbrains.kotlin.process.plugin.merge.model.getBranchOfFixedIssue
 import org.jetbrains.kotlin.process.plugin.merge.model.merge
 import java.awt.FlowLayout
@@ -43,6 +44,10 @@ class MergeBranchDialog(canBeParent: Boolean, private val project: Project) : Di
         val resolvedBranches = DefaultComboBoxModel<String>()
         resolvedBranches.addAll(getBranchOfFixedIssue(project))
 
-        return ComboBox(resolvedBranches, 320)
+        val resolvedBranchesBox = ComboBox(resolvedBranches, 320)
+        resolvedBranchesBox.isEditable = true
+        AutoCompleteDecorator.decorate(resolvedBranchesBox)
+
+        return resolvedBranchesBox
     }
 }

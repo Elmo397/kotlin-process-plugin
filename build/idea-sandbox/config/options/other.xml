@@ -1,57 +1,20 @@
 <application>
   <component name="PropertiesComponent">
-    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.62019914" />
-    <property name="FileTemplates.SelectedTemplate" value="HTML File" />
-    <property name="GradleModuleWizard.inheritGroupId" value="true" />
-    <property name="GradleModuleWizard.inheritVersion" value="true" />
-    <property name="branchName" value="rr/elya/TP-2/Support.internal.protected.visibility" />
-    <property name="build.toolwindow.Sync.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.60312945" />
+    <property name="branchName" value="rr/elya/TP-4/13s.hang.on.show.overrides" />
     <property name="com.jetbrains.youtrack.notifications" value="" />
     <property name="defaultJdkConfigured" value="true" />
     <property name="devNick" value="elya" />
-    <property name="fileTypeChangedCounter" value="316" />
+    <property name="fileTypeChangedCounter" value="45" />
     <property name="ide.memory.adjusted" value="true" />
     <property name="installed.kotlin.plugin.version" value="1.3.41-release-IJ2019.2-1" />
-    <property name="issueId" value="TP-2" />
-    <property name="jdk.selected.JAVA_MODULE" value="12" />
-    <property name="kotlin.lastUpdateCheck" value="1564408213547" />
+    <property name="issueId" value="TP-4" />
     <property name="kotlin.plugin.releaseDate" value="1.3.41-release-IJ2019.2-1:2019-07-03" />
-    <property name="lastTip" value="155" />
+    <property name="lastTip" value="45" />
     <property name="packagesearch.endpoint.url.fulltext" value="https://package-search.services.jetbrains.com/api/search/idea/fulltext" />
     <property name="packagesearch.endpoint.url.suggest" value="https://package-search.services.jetbrains.com/api/search/idea/suggest" />
-    <property name="packagesearch.status.updated.ts" value="1566209621704" />
-    <property name="port" value="8071" />
-    <property name="project.wizard.group" value="org.jetbrains.plugins.gradle.service.project.wizard.GradleModuleBuilder" />
-    <property name="secrets file path" value="$USER_HOME$/IdeaProjects/kotlin-process-plugin/src/main/resources/tmp/credentials.json" />
-    <property name="sheets id" value="1nfS0DrPtwA8juCtZY8hmlfED1UMT7NqUOFt9VF-s3-c" />
-    <property name="sheets name" value="Users" />
+    <property name="packagesearch.status.updated.ts" value="1566465107648" />
+    <property name="selectedBranch" value="rr/elya/TP-2/Support.internal.protected.visibility" />
     <property name="tasks.pass.word.conversion.enforced" value="true" />
-    <property name="tokens dir path" value="$USER_HOME$/IdeaProjects/kotlin-process-plugin/src/main/resources/tmp" />
-    <property name="vcs.log.changes.splitter.proportion" value="0.7447818" />
-    <property name="vcs.log.details.splitter.proportion" value="0.4779661" />
-  </component>
-  <component name="RecentTaskRepositories">
-    <YouTrack shared="false" url="https://youtrack.jetbrains.com">
-      <commitMessageFormat>{id} {summary}</commitMessageFormat>
-      <option name="defaultSearch" value="#Kotlin" />
-      <option name="loginAnonymously" value="false" />
-      <option name="preferredCloseTaskState" />
-      <option name="preferredOpenTaskState" />
-      <option name="shouldFormatCommitMessage" value="false" />
-      <option name="useHttpAuthentication" value="false" />
-      <option name="useProxy" value="false" />
-      <username>Elnara.Mamedova@jetbrains.com</username>
-    </YouTrack>
-    <YouTrack shared="false" url="https://testcloudv4.myjetbrains.com/youtrack">
-      <commitMessageFormat>{id} {summary}</commitMessageFormat>
-      <option name="defaultSearch" value="Assignee: me sort by: updated #Unresolved" />
-      <option name="loginAnonymously" value="false" />
-      <option name="preferredCloseTaskState" />
-      <option name="preferredOpenTaskState" />
-      <option name="shouldFormatCommitMessage" value="false" />
-      <option name="useHttpAuthentication" value="false" />
-      <option name="useProxy" value="false" />
-      <username>Elnara.Mamedova@jetbrains.com</username>
-    </YouTrack>
   </component>
 </application>
