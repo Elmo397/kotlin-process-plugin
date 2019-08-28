@@ -239,8 +239,6 @@ class IssueSelectionDialog(canBeParent: Boolean) : DialogWrapper(canBeParent) {
         val descriptionField = JTextArea(15, 70)
         descriptionField.isEditable = false
 
-        descriptionField.add(JLabel("JetBrains"))
-
         try {
             descriptionField.text =
                 showDescription(issueIdField,

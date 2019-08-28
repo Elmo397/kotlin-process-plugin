@@ -3,9 +3,6 @@ package org.jetbrains.kotlin.process.plugin.finalCommit.ui
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import org.jetbrains.kotlin.process.plugin.finalCommit.model.*
-import org.jetbrains.kotlin.process.plugin.issue.model.changeIssueState
-import org.jetbrains.kotlin.process.plugin.issue.model.getIssueOnBranch
-import org.jetbrains.kotlin.process.plugin.issue.model.showStateChangeResultBanner
 import java.awt.BorderLayout
 import javax.swing.JComponent
 import javax.swing.JLabel
@@ -35,7 +32,10 @@ class FinalCommitDialog(canBeParent: Boolean, private val branch: String, privat
         return commitPanel
     }
 
+    //TODO: create commit with commit message from field
     override fun doOKAction() {
+        gitAdd(project)
+        gitCommit(project, commitMessageField.text)
         changeStateToFixed(branch, project, this)
 
         super.doOKAction()

@@ -7,7 +7,7 @@
     <location key="#Servers.0.0.3360.2100@192dpi" x="880" y="384" />
     <location key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog.0.0.3360.2100@192dpi" x="1130" y="404" />
     <location key="git4idea.branch.GitSmartOperationDialog.0.0.3360.2100@192dpi" x="1188" y="492" />
-    <location key="IDE.errors.dialog.0.0.3360.2100@192dpi" x="856" y="456" />
+    <location key="IDE.errors.dialog.0.0.3360.2100@192dpi" x="0" y="46" />
     <location key="MultipleFileMergeDialog.0.0.3360.2100@192dpi" x="1106" y="498" />
     <location key="MergeDialog.0.0.3360.2100@192dpi" x="336" y="188" />
     <location key="Github.CreatePullRequestDialog.0.0.3360.2100@192dpi" x="1276" y="808" />
@@ -17,7 +17,7 @@
     <location key="git4idea.merge.GitMergeDialog.0.0.3360.2100@192dpi" x="1226" y="650" />
     <location key="Vcs.Push.Dialog.0.0.3360.2100@192dpi" x="1048" y="500" />
     <size key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog.0.0.3360.2100@192dpi" width="1618" height="1292" />
-    <size key="IDE.errors.dialog.0.0.3360.2100@192dpi" width="1648" height="1292" />
+    <size key="IDE.errors.dialog.0.0.3360.2100@192dpi" width="3360" height="1894" />
     <size key="MultipleFileMergeDialog.0.0.3360.2100@192dpi" width="1148" height="1104" />
     <size key="search.everywhere.popup.0.0.3360.2100@192dpi" width="1340" height="1352" />
   </component>

@@ -4,7 +4,6 @@ import com.github.jk1.ytplugin.whenActive
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import org.jetbrains.kotlin.process.plugin.issue.model.getIssueOnBranch
 import org.jetbrains.kotlin.process.plugin.issue.ui.DeleteBranchDialog
 
 class DeleteBranchAction(private val getSelectedBranch: () -> String?) : AnAction(
