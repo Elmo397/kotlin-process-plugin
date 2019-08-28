@@ -85,8 +85,6 @@ fun gitCommit(project: Project, commitMessage: String) {
         handler.endOptions()
         val result = git.runCommand(handler)
         result.throwOnError()
-
-        println(result.success())
     } catch (e: Throwable) {
         e.printStackTrace()
     }

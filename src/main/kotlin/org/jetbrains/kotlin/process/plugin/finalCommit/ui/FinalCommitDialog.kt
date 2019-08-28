@@ -32,7 +32,6 @@ class FinalCommitDialog(canBeParent: Boolean, private val branch: String, privat
         return commitPanel
     }
 
-    //TODO: create commit with commit message from field
     override fun doOKAction() {
         gitAdd(project)
         gitCommit(project, commitMessageField.text)
