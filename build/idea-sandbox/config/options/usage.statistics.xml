@@ -1,6 +1,6 @@
 <application>
   <component name="EventLogWhitelist">
-    <update recorder-id="FUS" last-modified="1566849662000" />
+    <update recorder-id="FUS" last-modified="1567022572000" />
   </component>
   <component name="FeatureUsageStatistics" first-run="1564157984273" have-been-shown="false" show-in-other="true" show-in-compilation="true">
     <feature id="editing.completion.smarttype.afternew" count="0" last-shown="0" last-used="0" shown-count="0" />

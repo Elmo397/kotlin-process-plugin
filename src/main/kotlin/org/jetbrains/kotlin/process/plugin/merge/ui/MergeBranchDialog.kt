@@ -1,5 +1,6 @@
 package org.jetbrains.kotlin.process.plugin.merge.ui
 
+import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogWrapper
@@ -27,6 +28,10 @@ class MergeBranchDialog(canBeParent: Boolean, private val project: Project) : Di
         mergePanel.add(JLabel("branch."))
 
         return mergePanel
+    }
+
+    override fun getPreferredFocusedComponent(): JComponent? {
+        return branchList
     }
 
     override fun doOKAction() {

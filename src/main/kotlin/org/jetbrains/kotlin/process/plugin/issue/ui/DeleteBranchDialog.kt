@@ -20,22 +20,25 @@ class DeleteBranchDialog(canBeParent: Boolean, private val project: Project, pri
         init()
     }
 
-    //TODO: do normal UI!
     override fun createCenterPanel(): JComponent? {
         return when {
             getIssueOnBranch(branch, project)!!.resolved -> {
                 val panel = JPanel()
-                panel.add(JLabel("Delete branch $branch?"))
+                panel.add(JLabel("<html>Delete branch <b>$branch</b>?</html>"))
 
                 panel
             }
             else -> {
                 title = "Warning"
 
-                val label = JLabel("Issue from branch $branch doesn't resolved. " +
-                        "Are you sure want delete this branch?")
-                label.icon = UIManager.getIcon("OptionPane.warningIcon")
+                val text = "<html>" +
+                        "Issue from branch <b>$branch</b> doesn't resolved.<br/>" +
+                        "Are you sure want delete this branch?" +
+                        "</html>"
+                val icon = UIManager.getIcon("OptionPane.warningIcon")
+                val horizontalAlignment = 10
 
+                val label = JLabel(text, icon, horizontalAlignment)
                 val panel = JPanel(BorderLayout())
                 panel.add(label, BorderLayout.NORTH)
 

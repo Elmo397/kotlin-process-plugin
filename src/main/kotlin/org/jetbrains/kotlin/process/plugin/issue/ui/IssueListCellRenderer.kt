@@ -61,7 +61,7 @@ class IssueListCellRenderer(
                 val issue = getIssueOnBranch(branch, project)!!
                 val fgColor = getFgColor(isSelected, issue)
 
-                background = UIUtil.getListBackground(isSelected)
+                background = UIUtil.getListBackground(isSelected, false)
 
                 fillBranchNameLine(issue, branch, fgColor)
                 fillCustomFields(issue, fgColor, isSelected)
@@ -75,7 +75,7 @@ class IssueListCellRenderer(
     }
 
     private fun getFgColor(isSelected: Boolean, issue: Issue) = when {
-        isSelected -> UIUtil.getListForeground(true)
+        isSelected -> UIUtil.getListForeground(true, false)
         issue.resolved -> Color(150, 150, 150)
         UIUtil.isUnderDarcula() -> Color(200, 200, 200)
         else -> Color(8, 8, 52)
@@ -115,7 +115,7 @@ class IssueListCellRenderer(
 
     private fun createTime(isSelected: Boolean, issue: Issue) {
         time.foreground = when {
-            isSelected -> UIUtil.getListForeground(true)
+            isSelected -> UIUtil.getListForeground(true, false)
             else -> JBColor(Color(75, 107, 244), Color(87, 120, 173))
         }
         time.text = issue.updateDate.format() + " "

@@ -69,15 +69,20 @@ class KotlinProcessToolWindow : ToolWindowFactory {
     }
 
     private fun createBranchActionToolbar(): JComponent {
-        val selectedBranch = { issueList.getSelectedBranch() }
         val group = DefaultActionGroup()
 
-        group.add(IssueAction())
-        group.add(RemoteRunStartAction())
-        group.add(RemoteRunSettingsAction())
-        group.add(FinalCommitAction(selectedBranch))
-        group.add(DeleteBranchAction(selectedBranch))
-        group.add(MergeAction())
+        try {
+            val selectedBranch = { issueList.getSelectedBranch() }
+            group.add(IssueAction())
+            group.add(RemoteRunStartAction())
+            group.add(RemoteRunSettingsAction())
+            group.add(FinalCommitAction(selectedBranch))
+            group.add(DeleteBranchAction(selectedBranch))
+            group.add(MergeAction())
+
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
 
         return createVerticalToolbarComponent(group)
     }

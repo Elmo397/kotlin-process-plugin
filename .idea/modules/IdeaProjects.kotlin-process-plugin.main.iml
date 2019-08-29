@@ -79,18 +79,6 @@
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.5" level="project" />
     <orderEntry type="library" name="Gradle: com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:1.1.1" level="project" />
     <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Gradle: unzipped.com.jetbrains.plugins:com.github.jk1.ytplugin:unzipped.com.jetbrains.plugins:0.10">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/nanohttpd-2.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/youtrack-plugin-api-0.10.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/youtrack-idea-plugin-0.10.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/searchableOptions-0.10.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
       <library name="Gradle: unzipped.com.jetbrains.plugins:tasks:unzipped.com.jetbrains.plugins:ideaIC-IC-192.5728.98-withSources">
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/tasks/lib/commons-discovery-0.4.jar!/" />
@@ -125,23 +113,21 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Gradle: unzipped.com.jetbrains.plugins:git4idea:unzipped.com.jetbrains.plugins:ideaIC-IC-192.5728.98-withSources">
+      <library name="Gradle: unzipped.com.jetbrains.plugins:com.github.jk1.ytplugin:unzipped.com.jetbrains.plugins:0.10">
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/resources_en.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/remote-servers-git.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/git4idea-rt.jar!/" />
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/git4idea.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/nanohttpd-2.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/youtrack-plugin-api-0.10.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/youtrack-idea-plugin-0.10.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/unzipped.com.jetbrains.plugins/com.github.jk1.ytplugin-0.10/ytplugin/lib/searchableOptions-0.10.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/f8ad76571011c249001f78c3054b911e5fe79ee2/ideaIC-2019.2-sources.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library name="Gradle: com.jetbrains:ideaIC:2019.2">
         <ANNOTATIONS>
-          <root url="jar://$MAVEN_REPOSITORY$/com/jetbrains/intellij/idea/ideaIU/2019.2/ideaIU-2019.2-annotations.zip!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/jetbrains/intellij/idea/ideaIU/2019.2.1/ideaIU-2019.2.1-annotations.zip!/" />
         </ANNOTATIONS>
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/lib/FastInfoset-1.2.15.jar!/" />
@@ -336,6 +322,20 @@
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/lib/xpp3_min-1.1.4c.jar!/" />
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/lib/xstream-1.4.11.1.jar!/" />
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/lib/xz-1.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/f8ad76571011c249001f78c3054b911e5fe79ee2/ideaIC-2019.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: unzipped.com.jetbrains.plugins:git4idea:unzipped.com.jetbrains.plugins:ideaIC-IC-192.5728.98-withSources">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/resources_en.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/remote-servers-git.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/git4idea-rt.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2019.2/b6afbf1111dae2b3e18581cd0b89bbfb063db9d5/ideaIC-2019.2/plugins/git4idea/lib/git4idea.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
