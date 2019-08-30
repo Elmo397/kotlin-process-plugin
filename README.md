@@ -13,7 +13,7 @@ If the text of this field does not suit the user, he can change it.
 * Below, under the created branch, a full description of the selected issue is displayed.
 * After selecting a issue and creating a branch, the issue status becomes "In Process".
 
-![create branch](readmeFiles/CreateBranch.gif)
+![create branch](https://github.com/Elmo397/kotlin-process-plugin/blob/master/src/main/resources/readmeFiles/CreateBranch.gif)
 
 # Remote Run  
 * When the remote run check is started, all branches of the current user are checked 
@@ -22,7 +22,7 @@ If the text of this field does not suit the user, he can change it.
 * If everything is fine in the current branch and user finished fixing the issue, user can create the final commit.
 * If not, then when user try to create the final commit, the user will be warned that the tests failed.
 
-![rr settings](readmeFiles/RrSettings.gif)
+![rr settings](https://github.com/Elmo397/kotlin-process-plugin/blob/master/src/main/resources/readmeFiles/RrSettings.png)
 
 # Review bot
 * In Process... (may be)
@@ -32,10 +32,10 @@ If the text of this field does not suit the user, he can change it.
 User can write your message above.
 * After creating the final commit, the status of the issue changes to "Fixed".
 
-![final commit](readmeFiles/StateToFixed.gif)
+![final commit](https://github.com/Elmo397/kotlin-process-plugin/blob/master/src/main/resources/readmeFiles/StateToFixed.gif)
 
 # Merge to master / release branch action
 * In dialog window user can choose branch for merge to master.
 * It is proposed to merge only those branches whose state is "Fixed".
 
-![merge](readmeFiles/Merge.gif)
+![merge](https://github.com/Elmo397/kotlin-process-plugin/blob/master/src/main/resources/readmeFiles/Merge.gif)
