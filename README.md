@@ -1,4 +1,4 @@
-#New task action
+# New issue action
 * Opens a dialog window in which the created branch is displayed in the format 
 rr / {user nick} / {issue id} / {short description}
 * The first time a branch is created in the current project, the user's nickname is saved in user settings. 
@@ -13,20 +13,29 @@ If the text of this field does not suit the user, he can change it.
 * Below, under the created branch, a full description of the selected issue is displayed.
 * After selecting a issue and creating a branch, the issue status becomes "In Process".
 
-#Remote Run  
-* When the remote run check is started, all branches of the current user are checked.
+![create branch](readmeFiles/CreateBranch.gif)
+
+# Remote Run  
+* When the remote run check is started, all branches of the current user are checked 
+(user can start check rr, but can't stop checking).
 * Checks are carried out every fixed number of seconds that can be configured (default is every 120 seconds).
-* If everything is fine in the current branch, then a message arrives that the user can create a Pull Request.
-* If not, then when you try to create a Pull Request, the user will be warned that the tests failed.
+* If everything is fine in the current branch and user finished fixing the issue, user can create the final commit.
+* If not, then when user try to create the final commit, the user will be warned that the tests failed.
 
-#Pull Request action
-* This action performs a pull request to the master.
-* The description field displays the issue that was completed, and you must write a reviewer. Autocomplete 
-is implemented to select a reviewer
+![rr settings](readmeFiles/RrSettings.gif)
 
-#Review bot
-* ...
+# Review bot
+* In Process... (may be)
 
-#Merge to master / release branch action
-* After review is finished, a dialog window is shown for user once a day with a proposal to merge his branch with master.
-* If Ok user branch merge in master.
+# Final commit action
+* Final commit has a default text: denotation of the fixed issue and selection reviewer's name. 
+User can write your message above.
+* After creating the final commit, the status of the issue changes to "Fixed".
+
+![final commit](readmeFiles/StateToFixed.gif)
+
+# Merge to master / release branch action
+* In dialog window user can choose branch for merge to master.
+* It is proposed to merge only those branches whose state is "Fixed".
+
+![merge](readmeFiles/Merge.gif)
